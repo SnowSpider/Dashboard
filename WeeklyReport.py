@@ -365,13 +365,103 @@ def Remove(duplicate):
 
 # ok Rng and Ser need to be cleaned up
 
+def unique_proc(arr):
+  arr_final = []
+  dupe = 0
+  for s in arr: 
+    if len(arr_final)>0:
+      for t in arr_final: 
+        if t.st_proc == s.st_proc:
+          dupe = 1
+    if dupe == 0:
+      arr_final.append(s)
+    dupe = 0
+  return arr_final
 
+def unique_ing(arr):
+  arr_final = []
+  dupe = 0
+  for s in arr: 
+    if len(arr_final)>0:
+      for t in arr_final: 
+        if t.st_ing == s.st_ing:
+          dupe = 1
+    if dupe == 0:
+      arr_final.append(s)
+    dupe = 0
+  return arr_final
 
+Rng_cmp_proc = unique_proc(Rng_cmp) # done
+Rng_cmp_ing = unique_ing(Rng_cmp) # done
 
+Rng_run_proc = unique_proc(Rng_run) # done
+Rng_run_ing = unique_ing(Rng_run) # done
+
+Ser_cmp_proc = unique_proc(Ser_cmp)
+Ser_run_proc = unique_proc(Ser_run)
+
+# failures should be backtracked. (NOT DONE)
 
 # 4. Create WeeklyRecord objects
 
 for i in xrange(1,len(arr_WR)-2):
+  
+  for s in Rng_cmp_proc: # Rng_cmp_proc
+    if s.st_proc != '':
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+        arr_WR[i].proc_Rng_cmp += 1
+        fd = s.fd_proc # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].proc_Rng_cmp_bad += 1
+    if s.st_pa1 != '':
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+        arr_WR[i].pa1_Rng_cmp += 1
+        fd = s.fd_pa1 # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].pa1_Rng_cmp_bad += 1
+    if s.st_pa2 != '':
+      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
+        arr_WR[i].pa2_Rng_cmp += 1
+    
+  for s in Rng_cmp_ing: # Rng_cmp_ing
+    if s.st_proc != '':
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.ing in arr_agent:
+        arr_WR[i].ing_Rng_cmp += 1
+        fd = s.fd_ing # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].ing_Rng_cmp_bad += 1
+    if s.st_ia1 != '':
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+        arr_WR[i].ia1_Rng_cmp += 1
+  
+  for s in Rng_run_proc: # Rng_run_proc
+    if s.st_proc != '':
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+        arr_WR[i].proc_Rng_run += 1
+        fd = s.fd_proc # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].proc_Rng_run_bad += 1
+    if s.st_pa1 != '':
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+        arr_WR[i].pa1_Rng_run += 1
+        fd = s.fd_pa1 # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].pa1_Rng_run_bad += 1
+    if s.st_pa2 != '':
+      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
+        arr_WR[i].pa2_Rng_run += 1
+    
+  for s in Rng_run_ing: # Rng_run_ing
+    if s.st_proc != '':
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.ing in arr_agent:
+        arr_WR[i].ing_Rng_run += 1
+        fd = s.fd_ing # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].ing_Rng_run_bad += 1
+    if s.st_ia1 != '':
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+        arr_WR[i].ia1_Rng_run += 1
+  
   for s in Ind_cmp: # Ind_cmp
     if s.st_proc != '':
       if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
@@ -540,7 +630,7 @@ for i in xrange(1,len(arr_WR)-2):
       if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
         arr_WR[i].ia1_IndMod_run += 1
   
-  for s in NoBO: #NoBO
+  for s in NoBO: # NoBO
     if s.st_proc != '':
       if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
         arr_WR[i].proc_NoBO += 1
@@ -548,15 +638,18 @@ for i in xrange(1,len(arr_WR)-2):
       if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
         arr_WR[i].pa1_NoBO += 1
   
-  for s in Stack_cmp: #Stack_cmp
+  for s in Stack_cmp: # Stack_cmp
     if s.st_proc != '':
       if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
         arr_WR[i].aps_Stack_cmp += 1
 
-  for s in Stack_run: #Stack_run
+  for s in Stack_run: # Stack_run
     if s.st_proc != '':
       if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
         arr_WR[i].aps_Stack_run += 1
+  
+  
+
 
 # 5. Write WeeklyRecord objects into the output sheet (WeeklyRecord.csv)
 
