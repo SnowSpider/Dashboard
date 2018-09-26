@@ -11,6 +11,7 @@ import sys
 from datetime import datetime
 from datetime import timedelta
 
+
 """ ............................................................................. """
 
 def col_to_num(col_str):
@@ -267,7 +268,7 @@ def arr_Stack(source):
     for row in csvreader:
       s = Stack()
       s.scope = source
-      s.st_proc = row[cn(source,'st_proc')]
+      s.st_proc = row[cn(source,'st_proc')] # What if the index is -1? It's ok. The sheets always have empty columns.
       s.proc = row[cn(source,'proc')]
       s.st_pa1 = row[cn(source,'st_pa1')]
       s.pa1 = row[cn(source,'pa1')]
@@ -397,14 +398,54 @@ Rng_cmp_ing = unique_ing(Rng_cmp) # done
 Rng_run_proc = unique_proc(Rng_run) # done
 Rng_run_ing = unique_ing(Rng_run) # done
 
-Ser_cmp_proc = unique_proc(Ser_cmp)
-Ser_run_proc = unique_proc(Ser_run)
+Ser_cmp_proc = unique_proc(Ser_cmp) # done
+Ser_run_proc = unique_proc(Ser_run) # done
 
 # failures should be backtracked. (NOT DONE)
 
 # 4. Create WeeklyRecord objects
 
 for i in xrange(1,len(arr_WR)-2):
+  
+  for s in Ser_cmp_proc: # Ser_cmp_proc
+    if s.st_proc != '':
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+        arr_WR[i].proc_Ser_cmp += 1
+        fd = s.fd_proc # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].proc_Ser_cmp_bad += 1
+    if s.st_pa1 != '':
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+        arr_WR[i].pa1_Ser_cmp += 1
+    if s.st_pa2 != '':
+      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
+        arr_WR[i].pa2_Ser_cmp += 1
+    if s.st_ing != '':
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+        arr_WR[i].ing_Ser_cmp += 1
+    if s.st_ia1 != '':
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+        arr_WR[i].ia1_Ser_cmp += 1
+  
+  for s in Ser_run_proc: # Ser_run_proc
+    if s.st_proc != '':
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+        arr_WR[i].proc_Ser_run += 1
+        fd = s.fd_proc # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].proc_Ser_run_bad += 1
+    if s.st_pa1 != '':
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+        arr_WR[i].pa1_Ser_run += 1
+    if s.st_pa2 != '':
+      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
+        arr_WR[i].pa2_Ser_run += 1
+    if s.st_ing != '':
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+        arr_WR[i].ing_Ser_run += 1
+    if s.st_ia1 != '':
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+        arr_WR[i].ia1_Ser_run += 1
   
   for s in Rng_cmp_proc: # Rng_cmp_proc
     if s.st_proc != '':
@@ -422,7 +463,7 @@ for i in xrange(1,len(arr_WR)-2):
     if s.st_pa2 != '':
       if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
         arr_WR[i].pa2_Rng_cmp += 1
-    
+  
   for s in Rng_cmp_ing: # Rng_cmp_ing
     if s.st_proc != '':
       if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.ing in arr_agent:
