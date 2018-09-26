@@ -42,6 +42,7 @@ class WeeklyRecord(object):
     self.proc_Parser_run_bad = 0
 
     self.total_proc = 0
+    self.total_proc_bad = 0
     self.acc_proc = 0
 
     self.pa1_Ind_cmp = 0
@@ -70,6 +71,7 @@ class WeeklyRecord(object):
     self.pa1_IndMod_run_bad = 0
 
     self.total_pa1 = 0
+    self.total_pa1_bad = 0
     self.acc_pa1 = 0
 
     self.pa2_Ind_cmp = 0
@@ -110,6 +112,7 @@ class WeeklyRecord(object):
     self.ing_Parser_ing_bad = 0
 
     self.total_ing = 0
+    self.total_ing_bad = 0
     self.acc_ing = 0
 
     self.ia1_Ind_cmp = 0
@@ -131,10 +134,12 @@ class WeeklyRecord(object):
     self.ia1_Parser_ing_bad = 0
 
     self.total_ia1 = 0
+    self.total_ia1_bad = 0
     self.acc_ia1 = 0
 
     self.ia2_Ind_cmp = 0
     self.ia2_Ind_run = 0
+    self.ia2_Parser_ing = 0
 
     self.total_ia2 = 0
 
@@ -145,9 +150,14 @@ class WeeklyRecord(object):
 
     self.total_mail = 0
     
+    self.BO_Parser_cmp = 0
+    self.BO_Parser_run = 0
+    
     self.total_BO = 0
     
     self.total_task = 0
+    
+    self.total_task_bad = 0
 
     self.acc_overall = 0
     

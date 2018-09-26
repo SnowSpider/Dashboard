@@ -1,0 +1,2 @@
+arr_WR[i].total_BO = arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run + arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run + arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run + arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run + arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run + arr_WR[i].proc_NoBO + arr_WR[i].proc_Parser_cmp + arr_WR[i].proc_Parser_run
+  

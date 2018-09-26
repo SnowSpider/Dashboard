@@ -1,4 +1,4 @@
-,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
 ,Processing start time,Processor LDAP,1st processing audit start time,1st processing auditor LDAP,1st processing audit failure detail,2nd processing audit start time,2nd processing auditor LDAP,2nd processing audit failure detail,Ingestion start time (submit time),Ingestor LDAP,1st ingestion audit start time,1st ingestion auditor LDAP,1st ingestion audit failure detail,2nd ingestion audit start time,2nd ingestion auditor LDAP,2nd ingestion audit failure detail,Blackout title,BPA link
 ,st_proc,proc,st_pa1,pa1,fd_proc,st_pa2,pa2,fd_pa1,st_ing,ing,st_ia1,ia1,fd_ing,st_ia2,ia2,fd_ia1,title,bpa
 Ind_cmp,B,N,B,T,U,B,W,X,R,Q,R,Z,AA,R,AC,AD,C,M
@@ -16,3 +16,4 @@ Parser_cmp,A,G,A,H,I,A,,,A,J,A,K,L,A,,,,F
 Parser_run,A,G,A,H,I,A,,,A,J,A,K,L,A,,,,F
 Stack_cmp,A,B,,,,,,,,,,,,,,,,C
 Stack_run,A,B,,,,,,,,,,,,,,,,C
+Parser_ing,,,,,,,,,A,B,A,C,,A,D,,,

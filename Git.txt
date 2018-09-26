@@ -1,0 +1,9 @@
+
+git remote add origin https://github.com/SnowSpider/Dashboard.git
+
+git add -A
+git commit -m "4th commit; failure backtracking pending"
+git push -u origin master
+
+
+git push -u origin master -f

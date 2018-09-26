@@ -97,7 +97,7 @@ while date_intermediate < date_end:
 
 arr_WR[1].week = date_start
 
-arr_WR[0].week = ''
+arr_WR[0].week = 'week'
 arr_WR[0].proc_Ind_cmp = 'proc_Ind_cmp'
 arr_WR[0].proc_Ind_run = 'proc_Ind_run'
 arr_WR[0].proc_Rng_cmp = 'proc_Rng_cmp'
@@ -127,6 +127,7 @@ arr_WR[0].proc_Parser_cmp_bad = 'proc_Parser_cmp_bad'
 arr_WR[0].proc_Parser_run_bad = 'proc_Parser_run_bad'
 
 arr_WR[0].total_proc = 'total_proc'
+arr_WR[0].total_proc_bad = 'total_proc_bad'
 arr_WR[0].acc_proc = 'acc_proc'
 
 arr_WR[0].pa1_Ind_cmp = 'pa1_Ind_cmp'
@@ -155,6 +156,7 @@ arr_WR[0].pa1_IndMod_cmp_bad = 'pa1_IndMod_cmp_bad'
 arr_WR[0].pa1_IndMod_run_bad = 'pa1_IndMod_run_bad'
 
 arr_WR[0].total_pa1 = 'total_pa1'
+arr_WR[0].total_pa1_bad = 'total_pa1_bad'
 arr_WR[0].acc_pa1 = 'acc_pa1'
 
 arr_WR[0].pa2_Ind_cmp = 'pa2_Ind_cmp'
@@ -195,6 +197,7 @@ arr_WR[0].ing_Parser_run_bad = 'ing_Parser_run_bad'
 arr_WR[0].ing_Parser_ing_bad = 'ing_Parser_ing_bad'
 
 arr_WR[0].total_ing = 'total_ing'
+arr_WR[0].total_ing_bad = 'total_ing_bad'
 arr_WR[0].acc_ing = 'acc_ing'
 
 arr_WR[0].ia1_Ind_cmp = 'ia1_Ind_cmp'
@@ -216,10 +219,12 @@ arr_WR[0].ia1_Ind_run_bad = 'ia1_Ind_run_bad'
 arr_WR[0].ia1_Parser_ing_bad = 'ia1_Parser_ing_bad'
 
 arr_WR[0].total_ia1 = 'total_ia1'
+arr_WR[0].total_ia1_bad = 'total_ia1_bad'
 arr_WR[0].acc_ia1 = 'acc_ia1'
 
 arr_WR[0].ia2_Ind_cmp = 'ia2_Ind_cmp'
 arr_WR[0].ia2_Ind_run = 'ia2_Ind_run'
+arr_WR[0].ia2_Parser_ing = 'ia2_Parser_ing'
 
 arr_WR[0].total_ia2 = 'total_ia2'
 
@@ -233,6 +238,8 @@ arr_WR[0].total_mail = 'total_mail'
 arr_WR[0].total_BO = 'total_BO'
 
 arr_WR[0].total_task = 'total_task'
+
+arr_WR[0].total_task_bad = 'total_task_bad'
 
 arr_WR[0].acc_overall = 'acc_overall'
 
@@ -268,7 +275,7 @@ def arr_Stack(source):
     for row in csvreader:
       s = Stack()
       s.scope = source
-      s.st_proc = row[cn(source,'st_proc')] # What if the index is -1? It's ok. The sheets always have empty columns.
+      s.st_proc = row[cn(source,'st_proc')] # What if the index is -1? It's ok. The sheets always have empty columns. If that sounds risky, add if statements later.
       s.proc = row[cn(source,'proc')]
       s.st_pa1 = row[cn(source,'st_pa1')]
       s.pa1 = row[cn(source,'pa1')]
@@ -304,6 +311,7 @@ Parser_cmp = arr_Stack('Parser_cmp')
 Parser_run = arr_Stack('Parser_run')
 Stack_cmp = arr_Stack('Stack_cmp')
 Stack_run = arr_Stack('Stack_run')
+Parser_ing = arr_Stack('Parser_ing')
 
 # Sort them
 # unused... nvm
@@ -689,21 +697,140 @@ for i in xrange(1,len(arr_WR)-2):
       if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
         arr_WR[i].aps_Stack_run += 1
   
+  # Parser stuff
   
+  for s in Parser_cmp: # Parser_cmp
+    if s.st_proc != '':
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+        arr_WR[i].proc_Parser_cmp += 1
+        fd = s.fd_proc # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].proc_Parser_cmp_bad += 1
+    if s.st_pa1 != '':
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+        arr_WR[i].pa1_Parser_cmp += 1
+    if s.st_ing != '':
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+        arr_WR[i].ing_Parser_cmp += 1
+        fd = s.fd_ing # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].ing_Parser_cmp_bad += 1
+    if s.st_ia1 != '':
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+        arr_WR[i].ia1_Parser_cmp += 1
+    
+  for s in Parser_run: # Parser_run
+    if s.st_proc != '':
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+        arr_WR[i].proc_Parser_run += 1
+        fd = s.fd_proc # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].proc_Parser_run_bad += 1
+    if s.st_pa1 != '':
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+        arr_WR[i].pa1_Parser_run += 1
+    if s.st_ing != '':
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+        arr_WR[i].ing_Parser_run += 1
+        fd = s.fd_ing # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].ing_Parser_run_bad += 1
+    if s.st_ia1 != '':
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+        arr_WR[i].ia1_Parser_run += 1
+  
+  # Parser_ing special stuff (done, but failure details are omitted)
+  
+  for s in Parser_ing: # Parser_ing
+    if s.st_ing != '':
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing + '@google.com' in arr_agent:
+        arr_WR[i].ing_Parser_ing += 1
+    if s.st_ia1 != '':
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 + '@google.com' in arr_agent:
+        arr_WR[i].ia1_Parser_ing += 1
+    if s.st_ia2 != '':
+      if t(s.st_ia2) >= arr_WR[i].week and t(s.st_ia2) < arr_WR[i+1].week and s.ia2 + '@google.com' in arr_agent:
+        arr_WR[i].ia2_Parser_ing += 1
+  
+  
+  # total figures (done)
+  
+  arr_WR[i].total_proc = arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run + arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run + arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run + arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run + arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run + arr_WR[i].proc_NoBO + arr_WR[i].proc_Parser_cmp + arr_WR[i].proc_Parser_run
+  arr_WR[i].total_proc_bad = arr_WR[i].proc_Ind_cmp_bad + arr_WR[i].proc_Ind_run_bad + arr_WR[i].proc_Rng_cmp_bad + arr_WR[i].proc_Rng_run_bad + arr_WR[i].proc_Ser_cmp_bad + arr_WR[i].proc_Ser_run_bad + arr_WR[i].proc_Bat_cmp_bad + arr_WR[i].proc_Bat_run_bad + arr_WR[i].proc_IndMod_cmp_bad + arr_WR[i].proc_IndMod_run_bad + arr_WR[i].proc_NoBO_bad + arr_WR[i].proc_Parser_cmp_bad + arr_WR[i].proc_Parser_run
+  if arr_WR[i].total_proc > 0:
+    arr_WR[i].acc_proc = (arr_WR[i].total_proc - arr_WR[i].total_proc_bad) / float(arr_WR[i].total_proc)
+  else:
+    arr_WR[i].acc_proc = 1.0
+  
+  arr_WR[i].total_pa1 = arr_WR[i].pa1_Ind_cmp + arr_WR[i].pa1_Ind_run + arr_WR[i].pa1_Rng_cmp + arr_WR[i].pa1_Rng_run + arr_WR[i].pa1_Ser_cmp + arr_WR[i].pa1_Ser_run + arr_WR[i].pa1_Bat_cmp + arr_WR[i].pa1_Bat_run + arr_WR[i].pa1_IndMod_cmp + arr_WR[i].pa1_IndMod_run + arr_WR[i].pa1_NoBO + arr_WR[i].pa1_Parser_cmp + arr_WR[i].pa1_Parser_run
+  arr_WR[i].total_pa1_bad = arr_WR[i].pa1_Ind_cmp_bad + arr_WR[i].pa1_Ind_run_bad + arr_WR[i].pa1_Rng_cmp_bad + arr_WR[i].pa1_Rng_run_bad + arr_WR[i].pa1_Ser_cmp_bad + arr_WR[i].pa1_Ser_run_bad + arr_WR[i].pa1_Bat_cmp_bad + arr_WR[i].pa1_Bat_run_bad + arr_WR[i].pa1_IndMod_cmp_bad + arr_WR[i].pa1_IndMod_run_bad
+  if arr_WR[i].total_pa1 > 0:
+    arr_WR[i].acc_pa1 = (arr_WR[i].total_pa1 - arr_WR[i].total_pa1_bad) / float(arr_WR[i].total_pa1)
+  else:
+    arr_WR[i].acc_pa1 = 1.0
 
+  arr_WR[i].total_pa2 = arr_WR[i].pa2_Ind_cmp + arr_WR[i].pa2_Ind_run + arr_WR[i].pa2_Rng_cmp + arr_WR[i].pa2_Rng_run + arr_WR[i].pa2_Bat_cmp + arr_WR[i].pa2_Bat_run
+  
+  arr_WR[i].total_ing = arr_WR[i].ing_Ind_cmp + arr_WR[i].ing_Ind_run + arr_WR[i].ing_Rng_cmp + arr_WR[i].ing_Rng_run + arr_WR[i].ing_Ser_cmp + arr_WR[i].ing_Ser_run + arr_WR[i].ing_Bat_cmp + arr_WR[i].ing_Bat_run + arr_WR[i].ing_IndMod_cmp + arr_WR[i].ing_IndMod_run + arr_WR[i].ing_Parser_cmp + arr_WR[i].ing_Parser_run + arr_WR[i].ing_Parser_ing
+  arr_WR[i].total_ing_bad = arr_WR[i].ing_Ind_cmp_bad + arr_WR[i].ing_Ind_run_bad + arr_WR[i].ing_Rng_cmp_bad + arr_WR[i].ing_Rng_run_bad + arr_WR[i].ing_Ser_cmp_bad + arr_WR[i].ing_Ser_run_bad + arr_WR[i].ing_Bat_cmp_bad + arr_WR[i].ing_Bat_run_bad + arr_WR[i].ing_IndMod_cmp_bad + arr_WR[i].ing_IndMod_run_bad + arr_WR[i].ing_Parser_cmp_bad + arr_WR[i].ing_Parser_run_bad + arr_WR[i].ing_Parser_ing_bad
+  if arr_WR[i].total_ing > 0:
+    arr_WR[i].acc_ing = (arr_WR[i].total_ing - arr_WR[i].total_ing_bad) / float(arr_WR[i].total_ing)
+  else:
+    arr_WR[i].acc_ing = 1.0
 
-# 5. Write WeeklyRecord objects into the output sheet (WeeklyRecord.csv)
+  arr_WR[i].total_ia1 = arr_WR[i].ia1_Ind_cmp + arr_WR[i].ia1_Ind_run + arr_WR[i].ia1_Rng_cmp + arr_WR[i].ia1_Rng_run + arr_WR[i].ia1_Ser_cmp + arr_WR[i].ia1_Ser_run + arr_WR[i].ia1_Bat_cmp + arr_WR[i].ia1_Bat_run + arr_WR[i].ia1_IndMod_cmp + arr_WR[i].ia1_IndMod_run + arr_WR[i].ia1_Parser_cmp + arr_WR[i].ia1_Parser_run + arr_WR[i].ia1_Parser_ing
+  arr_WR[i].total_ia1_bad = arr_WR[i].ia1_Ind_cmp_bad + arr_WR[i].ia1_Ind_run_bad + arr_WR[i].ia1_Parser_ing_bad
+  if arr_WR[i].total_ing > 0:
+    arr_WR[i].acc_ia1 = (arr_WR[i].total_ia1 - arr_WR[i].total_ia1_bad) / float(arr_WR[i].total_ia1)
+  else:
+    arr_WR[i].acc_ia1 = 1.0
+  
+  arr_WR[i].total_ia2 = arr_WR[i].ia2_Ind_cmp + arr_WR[i].ia2_Ind_run + arr_WR[i].ia2_Parser_ing
+  
+  arr_WR[i].total_aps = arr_WR[i].aps_Stack_cmp + arr_WR[i].aps_Stack_run
+  
+  # BO_Parser_cmp
+  
+  with open('Source/Parser_cmp.csv') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter = ',')
+    next(csvreader)
+    for row in csvreader:
+      if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week and row[col_to_num('G')] in arr_agent:
+        arr_WR[i].BO_Parser_cmp += int(row[col_to_num('E')])
+  
+  # BO_Parser_run
+  
+  with open('Source/Parser_run.csv') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter = ',')
+    next(csvreader)
+    for row in csvreader:
+      if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week and row[col_to_num('G')] in arr_agent:
+        arr_WR[i].BO_Parser_run += int(row[col_to_num('E')])
+      
+  
+  arr_WR[i].total_BO = arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run + arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run + arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run + arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run + arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run + arr_WR[i].BO_Parser_cmp + arr_WR[i].BO_Parser_run 
+  
+  arr_WR[i].total_task = arr_WR[i].total_proc + arr_WR[i].total_pa1 + arr_WR[i].total_pa2 + arr_WR[i].total_ing + arr_WR[i].total_ia1 + arr_WR[i].total_ia2
+  arr_WR[i].total_task_bad = arr_WR[i].total_proc_bad + arr_WR[i].total_pa1_bad + arr_WR[i].total_ing_bad + arr_WR[i].total_ia1_bad
+  if arr_WR[i].total_task > 0:
+    arr_WR[i].acc_overall = (arr_WR[i].total_task - arr_WR[i].total_task_bad) / float(arr_WR[i].total_task)
+  else:
+    arr_WR[i].acc_overall = 1.0
+  
+  
+  
+# 5. Write WeeklyRecord objects into the output sheet (Dashboard.csv)
 
 csvfile = open('Output/Dashboard.csv','w')
 d = ','
 for WR in arr_WR:
-  line = str(WR.week)+d+str(WR.proc_Ind_cmp)+d+str(WR.proc_Ind_run)+d+str(WR.proc_Rng_cmp)+d+str(WR.proc_Rng_run)+d+str(WR.proc_Ser_cmp)+d+str(WR.proc_Ser_run)+d+str(WR.proc_Bat_cmp)+d+str(WR.proc_Bat_run)+d+str(WR.proc_IndMod_cmp)+d+str(WR.proc_IndMod_run)+d+str(WR.proc_NoBO)+d+str(WR.proc_Parser_cmp)+d+str(WR.proc_Parser_run)+d+str(WR.proc_Ind_cmp_bad)+d+str(WR.proc_Ind_run_bad)+d+str(WR.proc_Rng_cmp_bad)+d+str(WR.proc_Rng_run_bad)+d+str(WR.proc_Ser_cmp_bad)+d+str(WR.proc_Ser_run_bad)+d+str(WR.proc_Bat_cmp_bad)+d+str(WR.proc_Bat_run_bad)+d+str(WR.proc_IndMod_cmp_bad)+d+str(WR.proc_IndMod_run_bad)+d+str(WR.proc_NoBO_bad)+d+str(WR.proc_Parser_cmp_bad)+d+str(WR.proc_Parser_run_bad)+d+str(WR.total_proc)+d+str(WR.acc_proc)+d+str(WR.pa1_Ind_cmp)+d+str(WR.pa1_Ind_run)+d+str(WR.pa1_Rng_cmp)+d+str(WR.pa1_Rng_run)+d+str(WR.pa1_Ser_cmp)+d+str(WR.pa1_Ser_run)+d+str(WR.pa1_Bat_cmp)+d+str(WR.pa1_Bat_run)+d+str(WR.pa1_IndMod_cmp)+d+str(WR.pa1_IndMod_run)+d+str(WR.pa1_NoBO)+d+str(WR.pa1_Parser_cmp)+d+str(WR.pa1_Parser_run)+d+str(WR.pa1_Ind_cmp_bad)+d+str(WR.pa1_Ind_run_bad)+d+str(WR.pa1_Rng_cmp_bad)+d+str(WR.pa1_Rng_run_bad)+d+str(WR.pa1_Ser_cmp_bad)+d+str(WR.pa1_Ser_run_bad)+d+str(WR.pa1_Bat_cmp_bad)+d+str(WR.pa1_Bat_run_bad)+d+str(WR.pa1_IndMod_cmp_bad)+d+str(WR.pa1_IndMod_run_bad)+d+str(WR.total_pa1)+d+str(WR.acc_pa1)+d+str(WR.pa2_Ind_cmp)+d+str(WR.pa2_Ind_run)+d+str(WR.pa2_Rng_cmp)+d+str(WR.pa2_Rng_run)+d+str(WR.pa2_Bat_cmp)+d+str(WR.pa2_Bat_run)+d+str(WR.total_pa2)+d+str(WR.ing_Ind_cmp)+d+str(WR.ing_Ind_run)+d+str(WR.ing_Rng_cmp)+d+str(WR.ing_Rng_run)+d+str(WR.ing_Ser_cmp)+d+str(WR.ing_Ser_run)+d+str(WR.ing_Bat_cmp)+d+str(WR.ing_Bat_run)+d+str(WR.ing_IndMod_cmp)+d+str(WR.ing_IndMod_run)+d+str(WR.ing_Parser_cmp)+d+str(WR.ing_Parser_run)+d+str(WR.ing_Parser_ing)+d+str(WR.ing_Ind_cmp_bad)+d+str(WR.ing_Ind_run_bad)+d+str(WR.ing_Rng_cmp_bad)+d+str(WR.ing_Rng_run_bad)+d+str(WR.ing_Ser_cmp_bad)+d+str(WR.ing_Ser_run_bad)+d+str(WR.ing_Bat_cmp_bad)+d+str(WR.ing_Bat_run_bad)+d+str(WR.ing_IndMod_cmp_bad)+d+str(WR.ing_IndMod_run_bad)+d+str(WR.ing_Parser_cmp_bad)+d+str(WR.ing_Parser_run_bad)+d+str(WR.ing_Parser_ing_bad)+d+str(WR.total_ing)+d+str(WR.acc_ing)+d+str(WR.ia1_Ind_cmp)+d+str(WR.ia1_Ind_run)+d+str(WR.ia1_Rng_cmp)+d+str(WR.ia1_Rng_run)+d+str(WR.ia1_Ser_cmp)+d+str(WR.ia1_Ser_run)+d+str(WR.ia1_Bat_cmp)+d+str(WR.ia1_Bat_run)+d+str(WR.ia1_IndMod_cmp)+d+str(WR.ia1_IndMod_run)+d+str(WR.ia1_Parser_cmp)+d+str(WR.ia1_Parser_run)+d+str(WR.ia1_Parser_ing)+d+str(WR.ia1_Ind_cmp_bad)+d+str(WR.ia1_Ind_run_bad)+d+str(WR.ia1_Parser_ing_bad)+d+str(WR.total_ia1)+d+str(WR.acc_ia1)+d+str(WR.ia2_Ind_cmp)+d+str(WR.ia2_Ind_run)+d+str(WR.total_ia2)+d+str(WR.aps_Stack_cmp)+d+str(WR.aps_Stack_run)+d+str(WR.total_aps)+d+str(WR.total_mail)+d+str(WR.total_BO)+d+str(WR.total_task)+d+str(WR.acc_overall)+'\n'
+  line = str(WR.week)+d+str(WR.proc_Ind_cmp)+d+str(WR.proc_Ind_run)+d+str(WR.proc_Rng_cmp)+d+str(WR.proc_Rng_run)+d+str(WR.proc_Ser_cmp)+d+str(WR.proc_Ser_run)+d+str(WR.proc_Bat_cmp)+d+str(WR.proc_Bat_run)+d+str(WR.proc_IndMod_cmp)+d+str(WR.proc_IndMod_run)+d+str(WR.proc_NoBO)+d+str(WR.proc_Parser_cmp)+d+str(WR.proc_Parser_run)+d+str(WR.proc_Ind_cmp_bad)+d+str(WR.proc_Ind_run_bad)+d+str(WR.proc_Rng_cmp_bad)+d+str(WR.proc_Rng_run_bad)+d+str(WR.proc_Ser_cmp_bad)+d+str(WR.proc_Ser_run_bad)+d+str(WR.proc_Bat_cmp_bad)+d+str(WR.proc_Bat_run_bad)+d+str(WR.proc_IndMod_cmp_bad)+d+str(WR.proc_IndMod_run_bad)+d+str(WR.proc_NoBO_bad)+d+str(WR.proc_Parser_cmp_bad)+d+str(WR.proc_Parser_run_bad)+d+str(WR.total_proc)+d+str(WR.total_proc_bad)+d+str(WR.acc_proc)+d+str(WR.pa1_Ind_cmp)+d+str(WR.pa1_Ind_run)+d+str(WR.pa1_Rng_cmp)+d+str(WR.pa1_Rng_run)+d+str(WR.pa1_Ser_cmp)+d+str(WR.pa1_Ser_run)+d+str(WR.pa1_Bat_cmp)+d+str(WR.pa1_Bat_run)+d+str(WR.pa1_IndMod_cmp)+d+str(WR.pa1_IndMod_run)+d+str(WR.pa1_NoBO)+d+str(WR.pa1_Parser_cmp)+d+str(WR.pa1_Parser_run)+d+str(WR.pa1_Ind_cmp_bad)+d+str(WR.pa1_Ind_run_bad)+d+str(WR.pa1_Rng_cmp_bad)+d+str(WR.pa1_Rng_run_bad)+d+str(WR.pa1_Ser_cmp_bad)+d+str(WR.pa1_Ser_run_bad)+d+str(WR.pa1_Bat_cmp_bad)+d+str(WR.pa1_Bat_run_bad)+d+str(WR.pa1_IndMod_cmp_bad)+d+str(WR.pa1_IndMod_run_bad)+d+str(WR.total_pa1)+d+str(WR.total_pa1_bad)+d+str(WR.acc_pa1)+d+str(WR.pa2_Ind_cmp)+d+str(WR.pa2_Ind_run)+d+str(WR.pa2_Rng_cmp)+d+str(WR.pa2_Rng_run)+d+str(WR.pa2_Bat_cmp)+d+str(WR.pa2_Bat_run)+d+str(WR.total_pa2)+d+str(WR.ing_Ind_cmp)+d+str(WR.ing_Ind_run)+d+str(WR.ing_Rng_cmp)+d+str(WR.ing_Rng_run)+d+str(WR.ing_Ser_cmp)+d+str(WR.ing_Ser_run)+d+str(WR.ing_Bat_cmp)+d+str(WR.ing_Bat_run)+d+str(WR.ing_IndMod_cmp)+d+str(WR.ing_IndMod_run)+d+str(WR.ing_Parser_cmp)+d+str(WR.ing_Parser_run)+d+str(WR.ing_Parser_ing)+d+str(WR.ing_Ind_cmp_bad)+d+str(WR.ing_Ind_run_bad)+d+str(WR.ing_Rng_cmp_bad)+d+str(WR.ing_Rng_run_bad)+d+str(WR.ing_Ser_cmp_bad)+d+str(WR.ing_Ser_run_bad)+d+str(WR.ing_Bat_cmp_bad)+d+str(WR.ing_Bat_run_bad)+d+str(WR.ing_IndMod_cmp_bad)+d+str(WR.ing_IndMod_run_bad)+d+str(WR.ing_Parser_cmp_bad)+d+str(WR.ing_Parser_run_bad)+d+str(WR.ing_Parser_ing_bad)+d+str(WR.total_ing)+d+str(WR.total_ing_bad)+d+str(WR.acc_ing)+d+str(WR.ia1_Ind_cmp)+d+str(WR.ia1_Ind_run)+d+str(WR.ia1_Rng_cmp)+d+str(WR.ia1_Rng_run)+d+str(WR.ia1_Ser_cmp)+d+str(WR.ia1_Ser_run)+d+str(WR.ia1_Bat_cmp)+d+str(WR.ia1_Bat_run)+d+str(WR.ia1_IndMod_cmp)+d+str(WR.ia1_IndMod_run)+d+str(WR.ia1_Parser_cmp)+d+str(WR.ia1_Parser_run)+d+str(WR.ia1_Parser_ing)+d+str(WR.ia1_Ind_cmp_bad)+d+str(WR.ia1_Ind_run_bad)+d+str(WR.ia1_Parser_ing_bad)+d+str(WR.total_ia1)+d+str(WR.total_ia1_bad)+d+str(WR.acc_ia1)+d+str(WR.ia2_Ind_cmp)+d+str(WR.ia2_Ind_run)+d+str(WR.ia2_Parser_ing)+d+str(WR.total_ia2)+d+str(WR.aps_Stack_cmp)+d+str(WR.aps_Stack_run)+d+str(WR.total_aps)+d+str(WR.total_mail)+d+str(WR.total_BO)+d+str(WR.total_task)+d+str(WR.total_task_bad)+d+str(WR.acc_overall)+'\n'
+
   csvfile.write(line)
 
 
 #sys.stdout.write('.')
 #sys.stdout.flush()
-
 
 
 

@@ -28,4 +28,3 @@ class Stack(object):
     self.title = ""
     self.bpa = ""
 
-
