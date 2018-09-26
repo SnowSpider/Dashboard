@@ -41,8 +41,8 @@ class WeeklyRecord(object):
     self.proc_Parser_cmp_bad = 0
     self.proc_Parser_run_bad = 0
 
-    self.total_proc = 0
-    self.total_proc_bad = 0
+    self.sum_proc = 0
+    self.sum_proc_bad = 0
     self.acc_proc = 0
 
     self.pa1_Ind_cmp = 0
@@ -70,8 +70,8 @@ class WeeklyRecord(object):
     self.pa1_IndMod_cmp_bad = 0
     self.pa1_IndMod_run_bad = 0
 
-    self.total_pa1 = 0
-    self.total_pa1_bad = 0
+    self.sum_pa1 = 0
+    self.sum_pa1_bad = 0
     self.acc_pa1 = 0
 
     self.pa2_Ind_cmp = 0
@@ -81,7 +81,7 @@ class WeeklyRecord(object):
     self.pa2_Bat_cmp = 0
     self.pa2_Bat_run = 0
 
-    self.total_pa2 = 0
+    self.sum_pa2 = 0
 
     self.ing_Ind_cmp = 0
     self.ing_Ind_run = 0
@@ -111,8 +111,8 @@ class WeeklyRecord(object):
     self.ing_Parser_run_bad = 0
     self.ing_Parser_ing_bad = 0
 
-    self.total_ing = 0
-    self.total_ing_bad = 0
+    self.sum_ing = 0
+    self.sum_ing_bad = 0
     self.acc_ing = 0
 
     self.ia1_Ind_cmp = 0
@@ -133,31 +133,31 @@ class WeeklyRecord(object):
     self.ia1_Ind_run_bad = 0
     self.ia1_Parser_ing_bad = 0
 
-    self.total_ia1 = 0
-    self.total_ia1_bad = 0
+    self.sum_ia1 = 0
+    self.sum_ia1_bad = 0
     self.acc_ia1 = 0
 
     self.ia2_Ind_cmp = 0
     self.ia2_Ind_run = 0
     self.ia2_Parser_ing = 0
 
-    self.total_ia2 = 0
+    self.sum_ia2 = 0
 
     self.aps_Stack_cmp = 0 # audit processed sheet
     self.aps_Stack_run = 0 # audit processed sheet
     
-    self.total_aps = 0
+    self.sum_aps = 0
 
-    self.total_mail = 0
+    self.sum_mail = 0
     
     self.BO_Parser_cmp = 0
     self.BO_Parser_run = 0
     
-    self.total_BO = 0
+    self.sum_BO = 0
     
-    self.total_task = 0
+    self.sum_task = 0
     
-    self.total_task_bad = 0
+    self.sum_task_bad = 0
 
     self.acc_overall = 0
     

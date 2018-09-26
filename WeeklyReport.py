@@ -126,8 +126,8 @@ arr_WR[0].proc_NoBO_bad = 'proc_NoBO_bad'
 arr_WR[0].proc_Parser_cmp_bad = 'proc_Parser_cmp_bad'
 arr_WR[0].proc_Parser_run_bad = 'proc_Parser_run_bad'
 
-arr_WR[0].total_proc = 'total_proc'
-arr_WR[0].total_proc_bad = 'total_proc_bad'
+arr_WR[0].sum_proc = 'sum_proc'
+arr_WR[0].sum_proc_bad = 'sum_proc_bad'
 arr_WR[0].acc_proc = 'acc_proc'
 
 arr_WR[0].pa1_Ind_cmp = 'pa1_Ind_cmp'
@@ -155,8 +155,8 @@ arr_WR[0].pa1_Bat_run_bad = 'pa1_Bat_run_bad'
 arr_WR[0].pa1_IndMod_cmp_bad = 'pa1_IndMod_cmp_bad'
 arr_WR[0].pa1_IndMod_run_bad = 'pa1_IndMod_run_bad'
 
-arr_WR[0].total_pa1 = 'total_pa1'
-arr_WR[0].total_pa1_bad = 'total_pa1_bad'
+arr_WR[0].sum_pa1 = 'sum_pa1'
+arr_WR[0].sum_pa1_bad = 'sum_pa1_bad'
 arr_WR[0].acc_pa1 = 'acc_pa1'
 
 arr_WR[0].pa2_Ind_cmp = 'pa2_Ind_cmp'
@@ -166,7 +166,7 @@ arr_WR[0].pa2_Rng_run = 'pa2_Rng_run'
 arr_WR[0].pa2_Bat_cmp = 'pa2_Bat_cmp'
 arr_WR[0].pa2_Bat_run = 'pa2_Bat_run'
 
-arr_WR[0].total_pa2 = 'total_pa2'
+arr_WR[0].sum_pa2 = 'sum_pa2'
 
 arr_WR[0].ing_Ind_cmp = 'ing_Ind_cmp'
 arr_WR[0].ing_Ind_run = 'ing_Ind_run'
@@ -196,8 +196,8 @@ arr_WR[0].ing_Parser_cmp_bad = 'ing_Parser_cmp_bad'
 arr_WR[0].ing_Parser_run_bad = 'ing_Parser_run_bad'
 arr_WR[0].ing_Parser_ing_bad = 'ing_Parser_ing_bad'
 
-arr_WR[0].total_ing = 'total_ing'
-arr_WR[0].total_ing_bad = 'total_ing_bad'
+arr_WR[0].sum_ing = 'sum_ing'
+arr_WR[0].sum_ing_bad = 'sum_ing_bad'
 arr_WR[0].acc_ing = 'acc_ing'
 
 arr_WR[0].ia1_Ind_cmp = 'ia1_Ind_cmp'
@@ -218,28 +218,28 @@ arr_WR[0].ia1_Ind_cmp_bad = 'ia1_Ind_cmp_bad'
 arr_WR[0].ia1_Ind_run_bad = 'ia1_Ind_run_bad'
 arr_WR[0].ia1_Parser_ing_bad = 'ia1_Parser_ing_bad'
 
-arr_WR[0].total_ia1 = 'total_ia1'
-arr_WR[0].total_ia1_bad = 'total_ia1_bad'
+arr_WR[0].sum_ia1 = 'sum_ia1'
+arr_WR[0].sum_ia1_bad = 'sum_ia1_bad'
 arr_WR[0].acc_ia1 = 'acc_ia1'
 
 arr_WR[0].ia2_Ind_cmp = 'ia2_Ind_cmp'
 arr_WR[0].ia2_Ind_run = 'ia2_Ind_run'
 arr_WR[0].ia2_Parser_ing = 'ia2_Parser_ing'
 
-arr_WR[0].total_ia2 = 'total_ia2'
+arr_WR[0].sum_ia2 = 'sum_ia2'
 
 arr_WR[0].aps_Stack_cmp = 'aps_Stack_cmp'
 arr_WR[0].aps_Stack_run = 'aps_Stack_run'
 
-arr_WR[0].total_aps = 'total_aps'
+arr_WR[0].sum_aps = 'sum_aps'
 
-arr_WR[0].total_mail = 'total_mail'
+arr_WR[0].sum_mail = 'sum_mail'
 
-arr_WR[0].total_BO = 'total_BO'
+arr_WR[0].sum_BO = 'sum_BO'
 
-arr_WR[0].total_task = 'total_task'
+arr_WR[0].sum_task = 'sum_task'
 
-arr_WR[0].total_task_bad = 'total_task_bad'
+arr_WR[0].sum_task_bad = 'sum_task_bad'
 
 arr_WR[0].acc_overall = 'acc_overall'
 
@@ -413,6 +413,25 @@ Ser_run_proc = unique_proc(Ser_run) # done
 
 # 4. Create WeeklyRecord objects
 
+# Pie, Blackout Scope
+
+total_Ind = 0
+total_Rng = 0
+total_Ser = 0
+total_Bat = 0
+total_Parser = 0
+total_IndMod = 0
+total_NoBO = 0
+
+# Pie, Task Type
+
+total_proc = 0
+total_pa1 = 0
+total_pa2 = 0
+total_ing = 0
+total_ia1 = 0
+total_ia2 = 0
+
 for i in xrange(1,len(arr_WR)-2):
   
   for s in Ser_cmp_proc: # Ser_cmp_proc
@@ -473,8 +492,8 @@ for i in xrange(1,len(arr_WR)-2):
         arr_WR[i].pa2_Rng_cmp += 1
   
   for s in Rng_cmp_ing: # Rng_cmp_ing
-    if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.ing in arr_agent:
+    if s.st_ing != '':
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
         arr_WR[i].ing_Rng_cmp += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
@@ -501,8 +520,8 @@ for i in xrange(1,len(arr_WR)-2):
         arr_WR[i].pa2_Rng_run += 1
     
   for s in Rng_run_ing: # Rng_run_ing
-    if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.ing in arr_agent:
+    if s.st_ing != '':
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
         arr_WR[i].ing_Rng_run += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
@@ -753,41 +772,41 @@ for i in xrange(1,len(arr_WR)-2):
         arr_WR[i].ia2_Parser_ing += 1
   
   
-  # total figures (done)
+  # sum figures (done)
   
-  arr_WR[i].total_proc = arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run + arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run + arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run + arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run + arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run + arr_WR[i].proc_NoBO + arr_WR[i].proc_Parser_cmp + arr_WR[i].proc_Parser_run
-  arr_WR[i].total_proc_bad = arr_WR[i].proc_Ind_cmp_bad + arr_WR[i].proc_Ind_run_bad + arr_WR[i].proc_Rng_cmp_bad + arr_WR[i].proc_Rng_run_bad + arr_WR[i].proc_Ser_cmp_bad + arr_WR[i].proc_Ser_run_bad + arr_WR[i].proc_Bat_cmp_bad + arr_WR[i].proc_Bat_run_bad + arr_WR[i].proc_IndMod_cmp_bad + arr_WR[i].proc_IndMod_run_bad + arr_WR[i].proc_NoBO_bad + arr_WR[i].proc_Parser_cmp_bad + arr_WR[i].proc_Parser_run
-  if arr_WR[i].total_proc > 0:
-    arr_WR[i].acc_proc = (arr_WR[i].total_proc - arr_WR[i].total_proc_bad) / float(arr_WR[i].total_proc)
+  arr_WR[i].sum_proc = arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run + arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run + arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run + arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run + arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run + arr_WR[i].proc_NoBO + arr_WR[i].proc_Parser_cmp + arr_WR[i].proc_Parser_run
+  arr_WR[i].sum_proc_bad = arr_WR[i].proc_Ind_cmp_bad + arr_WR[i].proc_Ind_run_bad + arr_WR[i].proc_Rng_cmp_bad + arr_WR[i].proc_Rng_run_bad + arr_WR[i].proc_Ser_cmp_bad + arr_WR[i].proc_Ser_run_bad + arr_WR[i].proc_Bat_cmp_bad + arr_WR[i].proc_Bat_run_bad + arr_WR[i].proc_IndMod_cmp_bad + arr_WR[i].proc_IndMod_run_bad + arr_WR[i].proc_NoBO_bad + arr_WR[i].proc_Parser_cmp_bad + arr_WR[i].proc_Parser_run
+  if arr_WR[i].sum_proc > 0:
+    arr_WR[i].acc_proc = (arr_WR[i].sum_proc - arr_WR[i].sum_proc_bad) / float(arr_WR[i].sum_proc)
   else:
     arr_WR[i].acc_proc = 1.0
   
-  arr_WR[i].total_pa1 = arr_WR[i].pa1_Ind_cmp + arr_WR[i].pa1_Ind_run + arr_WR[i].pa1_Rng_cmp + arr_WR[i].pa1_Rng_run + arr_WR[i].pa1_Ser_cmp + arr_WR[i].pa1_Ser_run + arr_WR[i].pa1_Bat_cmp + arr_WR[i].pa1_Bat_run + arr_WR[i].pa1_IndMod_cmp + arr_WR[i].pa1_IndMod_run + arr_WR[i].pa1_NoBO + arr_WR[i].pa1_Parser_cmp + arr_WR[i].pa1_Parser_run
-  arr_WR[i].total_pa1_bad = arr_WR[i].pa1_Ind_cmp_bad + arr_WR[i].pa1_Ind_run_bad + arr_WR[i].pa1_Rng_cmp_bad + arr_WR[i].pa1_Rng_run_bad + arr_WR[i].pa1_Ser_cmp_bad + arr_WR[i].pa1_Ser_run_bad + arr_WR[i].pa1_Bat_cmp_bad + arr_WR[i].pa1_Bat_run_bad + arr_WR[i].pa1_IndMod_cmp_bad + arr_WR[i].pa1_IndMod_run_bad
-  if arr_WR[i].total_pa1 > 0:
-    arr_WR[i].acc_pa1 = (arr_WR[i].total_pa1 - arr_WR[i].total_pa1_bad) / float(arr_WR[i].total_pa1)
+  arr_WR[i].sum_pa1 = arr_WR[i].pa1_Ind_cmp + arr_WR[i].pa1_Ind_run + arr_WR[i].pa1_Rng_cmp + arr_WR[i].pa1_Rng_run + arr_WR[i].pa1_Ser_cmp + arr_WR[i].pa1_Ser_run + arr_WR[i].pa1_Bat_cmp + arr_WR[i].pa1_Bat_run + arr_WR[i].pa1_IndMod_cmp + arr_WR[i].pa1_IndMod_run + arr_WR[i].pa1_NoBO + arr_WR[i].pa1_Parser_cmp + arr_WR[i].pa1_Parser_run
+  arr_WR[i].sum_pa1_bad = arr_WR[i].pa1_Ind_cmp_bad + arr_WR[i].pa1_Ind_run_bad + arr_WR[i].pa1_Rng_cmp_bad + arr_WR[i].pa1_Rng_run_bad + arr_WR[i].pa1_Ser_cmp_bad + arr_WR[i].pa1_Ser_run_bad + arr_WR[i].pa1_Bat_cmp_bad + arr_WR[i].pa1_Bat_run_bad + arr_WR[i].pa1_IndMod_cmp_bad + arr_WR[i].pa1_IndMod_run_bad
+  if arr_WR[i].sum_pa1 > 0:
+    arr_WR[i].acc_pa1 = (arr_WR[i].sum_pa1 - arr_WR[i].sum_pa1_bad) / float(arr_WR[i].sum_pa1)
   else:
     arr_WR[i].acc_pa1 = 1.0
 
-  arr_WR[i].total_pa2 = arr_WR[i].pa2_Ind_cmp + arr_WR[i].pa2_Ind_run + arr_WR[i].pa2_Rng_cmp + arr_WR[i].pa2_Rng_run + arr_WR[i].pa2_Bat_cmp + arr_WR[i].pa2_Bat_run
+  arr_WR[i].sum_pa2 = arr_WR[i].pa2_Ind_cmp + arr_WR[i].pa2_Ind_run + arr_WR[i].pa2_Rng_cmp + arr_WR[i].pa2_Rng_run + arr_WR[i].pa2_Bat_cmp + arr_WR[i].pa2_Bat_run
   
-  arr_WR[i].total_ing = arr_WR[i].ing_Ind_cmp + arr_WR[i].ing_Ind_run + arr_WR[i].ing_Rng_cmp + arr_WR[i].ing_Rng_run + arr_WR[i].ing_Ser_cmp + arr_WR[i].ing_Ser_run + arr_WR[i].ing_Bat_cmp + arr_WR[i].ing_Bat_run + arr_WR[i].ing_IndMod_cmp + arr_WR[i].ing_IndMod_run + arr_WR[i].ing_Parser_cmp + arr_WR[i].ing_Parser_run + arr_WR[i].ing_Parser_ing
-  arr_WR[i].total_ing_bad = arr_WR[i].ing_Ind_cmp_bad + arr_WR[i].ing_Ind_run_bad + arr_WR[i].ing_Rng_cmp_bad + arr_WR[i].ing_Rng_run_bad + arr_WR[i].ing_Ser_cmp_bad + arr_WR[i].ing_Ser_run_bad + arr_WR[i].ing_Bat_cmp_bad + arr_WR[i].ing_Bat_run_bad + arr_WR[i].ing_IndMod_cmp_bad + arr_WR[i].ing_IndMod_run_bad + arr_WR[i].ing_Parser_cmp_bad + arr_WR[i].ing_Parser_run_bad + arr_WR[i].ing_Parser_ing_bad
-  if arr_WR[i].total_ing > 0:
-    arr_WR[i].acc_ing = (arr_WR[i].total_ing - arr_WR[i].total_ing_bad) / float(arr_WR[i].total_ing)
+  arr_WR[i].sum_ing = arr_WR[i].ing_Ind_cmp + arr_WR[i].ing_Ind_run + arr_WR[i].ing_Rng_cmp + arr_WR[i].ing_Rng_run + arr_WR[i].ing_Ser_cmp + arr_WR[i].ing_Ser_run + arr_WR[i].ing_Bat_cmp + arr_WR[i].ing_Bat_run + arr_WR[i].ing_IndMod_cmp + arr_WR[i].ing_IndMod_run + arr_WR[i].ing_Parser_cmp + arr_WR[i].ing_Parser_run + arr_WR[i].ing_Parser_ing
+  arr_WR[i].sum_ing_bad = arr_WR[i].ing_Ind_cmp_bad + arr_WR[i].ing_Ind_run_bad + arr_WR[i].ing_Rng_cmp_bad + arr_WR[i].ing_Rng_run_bad + arr_WR[i].ing_Ser_cmp_bad + arr_WR[i].ing_Ser_run_bad + arr_WR[i].ing_Bat_cmp_bad + arr_WR[i].ing_Bat_run_bad + arr_WR[i].ing_IndMod_cmp_bad + arr_WR[i].ing_IndMod_run_bad + arr_WR[i].ing_Parser_cmp_bad + arr_WR[i].ing_Parser_run_bad + arr_WR[i].ing_Parser_ing_bad
+  if arr_WR[i].sum_ing > 0:
+    arr_WR[i].acc_ing = (arr_WR[i].sum_ing - arr_WR[i].sum_ing_bad) / float(arr_WR[i].sum_ing)
   else:
     arr_WR[i].acc_ing = 1.0
 
-  arr_WR[i].total_ia1 = arr_WR[i].ia1_Ind_cmp + arr_WR[i].ia1_Ind_run + arr_WR[i].ia1_Rng_cmp + arr_WR[i].ia1_Rng_run + arr_WR[i].ia1_Ser_cmp + arr_WR[i].ia1_Ser_run + arr_WR[i].ia1_Bat_cmp + arr_WR[i].ia1_Bat_run + arr_WR[i].ia1_IndMod_cmp + arr_WR[i].ia1_IndMod_run + arr_WR[i].ia1_Parser_cmp + arr_WR[i].ia1_Parser_run + arr_WR[i].ia1_Parser_ing
-  arr_WR[i].total_ia1_bad = arr_WR[i].ia1_Ind_cmp_bad + arr_WR[i].ia1_Ind_run_bad + arr_WR[i].ia1_Parser_ing_bad
-  if arr_WR[i].total_ing > 0:
-    arr_WR[i].acc_ia1 = (arr_WR[i].total_ia1 - arr_WR[i].total_ia1_bad) / float(arr_WR[i].total_ia1)
+  arr_WR[i].sum_ia1 = arr_WR[i].ia1_Ind_cmp + arr_WR[i].ia1_Ind_run + arr_WR[i].ia1_Rng_cmp + arr_WR[i].ia1_Rng_run + arr_WR[i].ia1_Ser_cmp + arr_WR[i].ia1_Ser_run + arr_WR[i].ia1_Bat_cmp + arr_WR[i].ia1_Bat_run + arr_WR[i].ia1_IndMod_cmp + arr_WR[i].ia1_IndMod_run + arr_WR[i].ia1_Parser_cmp + arr_WR[i].ia1_Parser_run + arr_WR[i].ia1_Parser_ing
+  arr_WR[i].sum_ia1_bad = arr_WR[i].ia1_Ind_cmp_bad + arr_WR[i].ia1_Ind_run_bad + arr_WR[i].ia1_Parser_ing_bad
+  if arr_WR[i].sum_ing > 0:
+    arr_WR[i].acc_ia1 = (arr_WR[i].sum_ia1 - arr_WR[i].sum_ia1_bad) / float(arr_WR[i].sum_ia1)
   else:
     arr_WR[i].acc_ia1 = 1.0
   
-  arr_WR[i].total_ia2 = arr_WR[i].ia2_Ind_cmp + arr_WR[i].ia2_Ind_run + arr_WR[i].ia2_Parser_ing
+  arr_WR[i].sum_ia2 = arr_WR[i].ia2_Ind_cmp + arr_WR[i].ia2_Ind_run + arr_WR[i].ia2_Parser_ing
   
-  arr_WR[i].total_aps = arr_WR[i].aps_Stack_cmp + arr_WR[i].aps_Stack_run
+  arr_WR[i].sum_aps = arr_WR[i].aps_Stack_cmp + arr_WR[i].aps_Stack_run
   
   # BO_Parser_cmp
   
@@ -808,26 +827,49 @@ for i in xrange(1,len(arr_WR)-2):
         arr_WR[i].BO_Parser_run += int(row[col_to_num('E')])
       
   
-  arr_WR[i].total_BO = arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run + arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run + arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run + arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run + arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run + arr_WR[i].BO_Parser_cmp + arr_WR[i].BO_Parser_run 
+  arr_WR[i].sum_BO = arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run + arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run + arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run + arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run + arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run + arr_WR[i].proc_NoBO + arr_WR[i].BO_Parser_cmp + arr_WR[i].BO_Parser_run 
   
-  arr_WR[i].total_task = arr_WR[i].total_proc + arr_WR[i].total_pa1 + arr_WR[i].total_pa2 + arr_WR[i].total_ing + arr_WR[i].total_ia1 + arr_WR[i].total_ia2
-  arr_WR[i].total_task_bad = arr_WR[i].total_proc_bad + arr_WR[i].total_pa1_bad + arr_WR[i].total_ing_bad + arr_WR[i].total_ia1_bad
-  if arr_WR[i].total_task > 0:
-    arr_WR[i].acc_overall = (arr_WR[i].total_task - arr_WR[i].total_task_bad) / float(arr_WR[i].total_task)
+  arr_WR[i].sum_task = arr_WR[i].sum_proc + arr_WR[i].sum_pa1 + arr_WR[i].sum_pa2 + arr_WR[i].sum_ing + arr_WR[i].sum_ia1 + arr_WR[i].sum_ia2
+  arr_WR[i].sum_task_bad = arr_WR[i].sum_proc_bad + arr_WR[i].sum_pa1_bad + arr_WR[i].sum_ing_bad + arr_WR[i].sum_ia1_bad
+  if arr_WR[i].sum_task > 0:
+    arr_WR[i].acc_overall = (arr_WR[i].sum_task - arr_WR[i].sum_task_bad) / float(arr_WR[i].sum_task)
   else:
     arr_WR[i].acc_overall = 1.0
   
-  
+  total_Ind += arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run
+  total_Rng += arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run
+  total_Ser += arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run
+  total_Bat += arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run
+  total_Parser += arr_WR[i].BO_Parser_cmp + arr_WR[i].BO_Parser_run
+  total_IndMod += arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run
+  total_NoBO += arr_WR[i].proc_NoBO
+
+  total_proc += arr_WR[i].sum_proc
+  total_pa1 += arr_WR[i].sum_pa1
+  total_pa2 += arr_WR[i].sum_pa2
+  total_ing += arr_WR[i].sum_ing
+  total_ia1 += arr_WR[i].sum_ia1
+  total_ia2 += arr_WR[i].sum_ia2
   
 # 5. Write WeeklyRecord objects into the output sheet (Dashboard.csv)
 
 csvfile = open('Output/Dashboard.csv','w')
 d = ','
 for WR in arr_WR:
-  line = str(WR.week)+d+str(WR.proc_Ind_cmp)+d+str(WR.proc_Ind_run)+d+str(WR.proc_Rng_cmp)+d+str(WR.proc_Rng_run)+d+str(WR.proc_Ser_cmp)+d+str(WR.proc_Ser_run)+d+str(WR.proc_Bat_cmp)+d+str(WR.proc_Bat_run)+d+str(WR.proc_IndMod_cmp)+d+str(WR.proc_IndMod_run)+d+str(WR.proc_NoBO)+d+str(WR.proc_Parser_cmp)+d+str(WR.proc_Parser_run)+d+str(WR.proc_Ind_cmp_bad)+d+str(WR.proc_Ind_run_bad)+d+str(WR.proc_Rng_cmp_bad)+d+str(WR.proc_Rng_run_bad)+d+str(WR.proc_Ser_cmp_bad)+d+str(WR.proc_Ser_run_bad)+d+str(WR.proc_Bat_cmp_bad)+d+str(WR.proc_Bat_run_bad)+d+str(WR.proc_IndMod_cmp_bad)+d+str(WR.proc_IndMod_run_bad)+d+str(WR.proc_NoBO_bad)+d+str(WR.proc_Parser_cmp_bad)+d+str(WR.proc_Parser_run_bad)+d+str(WR.total_proc)+d+str(WR.total_proc_bad)+d+str(WR.acc_proc)+d+str(WR.pa1_Ind_cmp)+d+str(WR.pa1_Ind_run)+d+str(WR.pa1_Rng_cmp)+d+str(WR.pa1_Rng_run)+d+str(WR.pa1_Ser_cmp)+d+str(WR.pa1_Ser_run)+d+str(WR.pa1_Bat_cmp)+d+str(WR.pa1_Bat_run)+d+str(WR.pa1_IndMod_cmp)+d+str(WR.pa1_IndMod_run)+d+str(WR.pa1_NoBO)+d+str(WR.pa1_Parser_cmp)+d+str(WR.pa1_Parser_run)+d+str(WR.pa1_Ind_cmp_bad)+d+str(WR.pa1_Ind_run_bad)+d+str(WR.pa1_Rng_cmp_bad)+d+str(WR.pa1_Rng_run_bad)+d+str(WR.pa1_Ser_cmp_bad)+d+str(WR.pa1_Ser_run_bad)+d+str(WR.pa1_Bat_cmp_bad)+d+str(WR.pa1_Bat_run_bad)+d+str(WR.pa1_IndMod_cmp_bad)+d+str(WR.pa1_IndMod_run_bad)+d+str(WR.total_pa1)+d+str(WR.total_pa1_bad)+d+str(WR.acc_pa1)+d+str(WR.pa2_Ind_cmp)+d+str(WR.pa2_Ind_run)+d+str(WR.pa2_Rng_cmp)+d+str(WR.pa2_Rng_run)+d+str(WR.pa2_Bat_cmp)+d+str(WR.pa2_Bat_run)+d+str(WR.total_pa2)+d+str(WR.ing_Ind_cmp)+d+str(WR.ing_Ind_run)+d+str(WR.ing_Rng_cmp)+d+str(WR.ing_Rng_run)+d+str(WR.ing_Ser_cmp)+d+str(WR.ing_Ser_run)+d+str(WR.ing_Bat_cmp)+d+str(WR.ing_Bat_run)+d+str(WR.ing_IndMod_cmp)+d+str(WR.ing_IndMod_run)+d+str(WR.ing_Parser_cmp)+d+str(WR.ing_Parser_run)+d+str(WR.ing_Parser_ing)+d+str(WR.ing_Ind_cmp_bad)+d+str(WR.ing_Ind_run_bad)+d+str(WR.ing_Rng_cmp_bad)+d+str(WR.ing_Rng_run_bad)+d+str(WR.ing_Ser_cmp_bad)+d+str(WR.ing_Ser_run_bad)+d+str(WR.ing_Bat_cmp_bad)+d+str(WR.ing_Bat_run_bad)+d+str(WR.ing_IndMod_cmp_bad)+d+str(WR.ing_IndMod_run_bad)+d+str(WR.ing_Parser_cmp_bad)+d+str(WR.ing_Parser_run_bad)+d+str(WR.ing_Parser_ing_bad)+d+str(WR.total_ing)+d+str(WR.total_ing_bad)+d+str(WR.acc_ing)+d+str(WR.ia1_Ind_cmp)+d+str(WR.ia1_Ind_run)+d+str(WR.ia1_Rng_cmp)+d+str(WR.ia1_Rng_run)+d+str(WR.ia1_Ser_cmp)+d+str(WR.ia1_Ser_run)+d+str(WR.ia1_Bat_cmp)+d+str(WR.ia1_Bat_run)+d+str(WR.ia1_IndMod_cmp)+d+str(WR.ia1_IndMod_run)+d+str(WR.ia1_Parser_cmp)+d+str(WR.ia1_Parser_run)+d+str(WR.ia1_Parser_ing)+d+str(WR.ia1_Ind_cmp_bad)+d+str(WR.ia1_Ind_run_bad)+d+str(WR.ia1_Parser_ing_bad)+d+str(WR.total_ia1)+d+str(WR.total_ia1_bad)+d+str(WR.acc_ia1)+d+str(WR.ia2_Ind_cmp)+d+str(WR.ia2_Ind_run)+d+str(WR.ia2_Parser_ing)+d+str(WR.total_ia2)+d+str(WR.aps_Stack_cmp)+d+str(WR.aps_Stack_run)+d+str(WR.total_aps)+d+str(WR.total_mail)+d+str(WR.total_BO)+d+str(WR.total_task)+d+str(WR.total_task_bad)+d+str(WR.acc_overall)+'\n'
+  line = str(WR.week)+d+str(WR.proc_Ind_cmp)+d+str(WR.proc_Ind_run)+d+str(WR.proc_Rng_cmp)+d+str(WR.proc_Rng_run)+d+str(WR.proc_Ser_cmp)+d+str(WR.proc_Ser_run)+d+str(WR.proc_Bat_cmp)+d+str(WR.proc_Bat_run)+d+str(WR.proc_IndMod_cmp)+d+str(WR.proc_IndMod_run)+d+str(WR.proc_NoBO)+d+str(WR.proc_Parser_cmp)+d+str(WR.proc_Parser_run)+d+str(WR.proc_Ind_cmp_bad)+d+str(WR.proc_Ind_run_bad)+d+str(WR.proc_Rng_cmp_bad)+d+str(WR.proc_Rng_run_bad)+d+str(WR.proc_Ser_cmp_bad)+d+str(WR.proc_Ser_run_bad)+d+str(WR.proc_Bat_cmp_bad)+d+str(WR.proc_Bat_run_bad)+d+str(WR.proc_IndMod_cmp_bad)+d+str(WR.proc_IndMod_run_bad)+d+str(WR.proc_NoBO_bad)+d+str(WR.proc_Parser_cmp_bad)+d+str(WR.proc_Parser_run_bad)+d+str(WR.sum_proc)+d+str(WR.sum_proc_bad)+d+str(WR.acc_proc)+d+str(WR.pa1_Ind_cmp)+d+str(WR.pa1_Ind_run)+d+str(WR.pa1_Rng_cmp)+d+str(WR.pa1_Rng_run)+d+str(WR.pa1_Ser_cmp)+d+str(WR.pa1_Ser_run)+d+str(WR.pa1_Bat_cmp)+d+str(WR.pa1_Bat_run)+d+str(WR.pa1_IndMod_cmp)+d+str(WR.pa1_IndMod_run)+d+str(WR.pa1_NoBO)+d+str(WR.pa1_Parser_cmp)+d+str(WR.pa1_Parser_run)+d+str(WR.pa1_Ind_cmp_bad)+d+str(WR.pa1_Ind_run_bad)+d+str(WR.pa1_Rng_cmp_bad)+d+str(WR.pa1_Rng_run_bad)+d+str(WR.pa1_Ser_cmp_bad)+d+str(WR.pa1_Ser_run_bad)+d+str(WR.pa1_Bat_cmp_bad)+d+str(WR.pa1_Bat_run_bad)+d+str(WR.pa1_IndMod_cmp_bad)+d+str(WR.pa1_IndMod_run_bad)+d+str(WR.sum_pa1)+d+str(WR.sum_pa1_bad)+d+str(WR.acc_pa1)+d+str(WR.pa2_Ind_cmp)+d+str(WR.pa2_Ind_run)+d+str(WR.pa2_Rng_cmp)+d+str(WR.pa2_Rng_run)+d+str(WR.pa2_Bat_cmp)+d+str(WR.pa2_Bat_run)+d+str(WR.sum_pa2)+d+str(WR.ing_Ind_cmp)+d+str(WR.ing_Ind_run)+d+str(WR.ing_Rng_cmp)+d+str(WR.ing_Rng_run)+d+str(WR.ing_Ser_cmp)+d+str(WR.ing_Ser_run)+d+str(WR.ing_Bat_cmp)+d+str(WR.ing_Bat_run)+d+str(WR.ing_IndMod_cmp)+d+str(WR.ing_IndMod_run)+d+str(WR.ing_Parser_cmp)+d+str(WR.ing_Parser_run)+d+str(WR.ing_Parser_ing)+d+str(WR.ing_Ind_cmp_bad)+d+str(WR.ing_Ind_run_bad)+d+str(WR.ing_Rng_cmp_bad)+d+str(WR.ing_Rng_run_bad)+d+str(WR.ing_Ser_cmp_bad)+d+str(WR.ing_Ser_run_bad)+d+str(WR.ing_Bat_cmp_bad)+d+str(WR.ing_Bat_run_bad)+d+str(WR.ing_IndMod_cmp_bad)+d+str(WR.ing_IndMod_run_bad)+d+str(WR.ing_Parser_cmp_bad)+d+str(WR.ing_Parser_run_bad)+d+str(WR.ing_Parser_ing_bad)+d+str(WR.sum_ing)+d+str(WR.sum_ing_bad)+d+str(WR.acc_ing)+d+str(WR.ia1_Ind_cmp)+d+str(WR.ia1_Ind_run)+d+str(WR.ia1_Rng_cmp)+d+str(WR.ia1_Rng_run)+d+str(WR.ia1_Ser_cmp)+d+str(WR.ia1_Ser_run)+d+str(WR.ia1_Bat_cmp)+d+str(WR.ia1_Bat_run)+d+str(WR.ia1_IndMod_cmp)+d+str(WR.ia1_IndMod_run)+d+str(WR.ia1_Parser_cmp)+d+str(WR.ia1_Parser_run)+d+str(WR.ia1_Parser_ing)+d+str(WR.ia1_Ind_cmp_bad)+d+str(WR.ia1_Ind_run_bad)+d+str(WR.ia1_Parser_ing_bad)+d+str(WR.sum_ia1)+d+str(WR.sum_ia1_bad)+d+str(WR.acc_ia1)+d+str(WR.ia2_Ind_cmp)+d+str(WR.ia2_Ind_run)+d+str(WR.ia2_Parser_ing)+d+str(WR.sum_ia2)+d+str(WR.aps_Stack_cmp)+d+str(WR.aps_Stack_run)+d+str(WR.sum_aps)+d+str(WR.sum_mail)+d+str(WR.sum_BO)+d+str(WR.sum_task)+d+str(WR.sum_task_bad)+d+str(WR.acc_overall)+'\n'
 
   csvfile.write(line)
 
+csvfile = open('Output/Pie.csv','w')
+d = ','
+csvfile.write('Blackout Scope'+d+'Total'+d+d+'Task Type'+d+'Total'+'\n')
+csvfile.write('Individual'+d+str(total_Ind)+d+d+'Symphony Processing'+d+str(total_proc)+'\n')
+csvfile.write('Ranged'+d+str(total_Rng)+d+d+'1st Processing Audit'+d+str(total_pa1)+'\n')
+csvfile.write('Series'+d+str(total_Ser)+d+d+'2nd Processing Audit'+d+str(total_pa2)+'\n')
+csvfile.write('Batch'+d+str(total_Bat)+d+d+'Hades Ingestion'+d+str(total_ing)+'\n')
+csvfile.write('Parser-processed'+d+str(total_Parser)+d+d+'1st Ingestion Audit'+d+str(total_ia1)+'\n')
+csvfile.write('Modification'+d+str(total_IndMod)+d+d+'2nd Ingestion Audit'+d+str(total_ia2)+'\n')
+csvfile.write('No Blackout'+d+str(total_NoBO)+'\n')
 
 #sys.stdout.write('.')
 #sys.stdout.flush()
