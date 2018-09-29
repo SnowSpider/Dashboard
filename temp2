@@ -1,0 +1,6 @@
+    if s.st_pa1 != '':
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+        arr_WR[i].pa1_IndMod_cmp += 1
+        fd = s.fd_pa1 # check failure detail
+        if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
+          arr_WR[i].pa1_IndMod_cmp_bad += 1

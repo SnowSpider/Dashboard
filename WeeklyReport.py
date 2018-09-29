@@ -12,6 +12,19 @@ from datetime import datetime
 from datetime import timedelta
 
 
+def getTypes(): 
+  arr = []
+  with open('Source/Index.csv') as csvfile:
+    csvreader = csv.reader(csvfile, delimiter = ',')
+    next(csvreader)
+    next(csvreader)
+    next(csvreader)
+    for row in csvreader:
+      arr.append(row[0])
+  return arr
+
+arr_type_task = getTypes()
+
 """ ............................................................................. """
 
 def col_to_num(col_str):
@@ -275,24 +288,105 @@ def arr_Stack(source):
     for row in csvreader:
       s = Stack()
       s.scope = source
-      s.st_proc = row[cn(source,'st_proc')] # What if the index is -1? It's ok. The sheets always have empty columns. If that sounds risky, add if statements later.
-      s.proc = row[cn(source,'proc')]
-      s.st_pa1 = row[cn(source,'st_pa1')]
-      s.pa1 = row[cn(source,'pa1')]
-      s.fd_proc = row[cn(source,'fd_proc')]
-      s.st_pa2 = row[cn(source,'st_pa2')]
-      s.pa2 = row[cn(source,'pa2')]
-      s.fd_pa1 = row[cn(source,'fd_pa1')]
-      s.st_ing = row[cn(source,'st_ing')]
-      s.ing = row[cn(source,'ing')]
-      s.st_ia1 = row[cn(source,'st_ia1')]
-      s.ia1 = row[cn(source,'ia1')]
-      s.fd_ing = row[cn(source,'fd_ing')]
-      s.st_ia2 = row[cn(source,'st_ia2')]
-      s.ia2 = row[cn(source,'ia2')]
-      s.fd_ia1 = row[cn(source,'fd_ia1')]
-      s.title = row[cn(source,'title')]
-      s.bpa = row[cn(source,'bpa')]
+      
+      # column wrapping issue resolved.
+      # Optimize using:
+      # getattr(object, attrname)
+      # setattr(object, attrname, value)
+      
+      # https://stackoverflow.com/questions/2612610/how-to-access-object-attribute-given-string-corresponding-to-name-of-that-attrib
+      # https://stackoverflow.com/questions/11637293/iterate-over-object-attributes-in-python
+      
+      if cn(source, 'st_proc') == -1:
+        s.st_proc = ''
+      else:
+        s.st_proc = row[cn(source,'st_proc')]
+      
+      if cn(source, 'proc') == -1:
+        s.proc = ''
+      else:
+        s.proc = row[cn(source,'proc')]
+      
+      if cn(source, 'st_pa1') == -1:
+        s.st_pa1 = ''
+      else:
+        s.st_pa1 = row[cn(source,'st_pa1')]
+      
+      if cn(source, 'pa1') == -1:
+        s.pa1 = ''
+      else:
+        s.pa1 = row[cn(source,'pa1')]
+      
+      if cn(source, 'fd_proc') == -1:
+        s.fd_proc = ''
+      else:
+        s.fd_proc = row[cn(source,'fd_proc')]
+        
+      if cn(source, 'st_pa2') == -1:
+        s.st_pa2 = ''
+      else:
+        s.st_pa2 = row[cn(source,'st_pa2')]
+      
+      if cn(source, 'pa2') == -1:
+        s.pa2 = ''
+      else:
+        s.pa2 = row[cn(source,'pa2')]
+      
+      if cn(source, 'fd_pa1') == -1:
+        s.fd_pa1 = ''
+      else:
+        s.fd_pa1 = row[cn(source,'fd_pa1')]
+      
+      if cn(source, 'st_ing') == -1:
+        s.st_ing = ''
+      else:
+        s.st_ing = row[cn(source,'st_ing')]
+        
+      if cn(source, 'ing') == -1:
+        s.ing = ''
+      else:
+        s.ing = row[cn(source,'ing')]
+        
+      if cn(source, 'st_ia1') == -1:
+        s.st_ia1 = ''
+      else:
+        s.st_ia1 = row[cn(source,'st_ia1')]
+        
+      if cn(source, 'ia1') == -1:
+        s.ia1 = ''
+      else:
+        s.ia1 = row[cn(source,'ia1')]  
+        
+      if cn(source, 'fd_ing') == -1:
+        s.fd_ing = ''
+      else:
+        s.fd_ing = row[cn(source,'fd_ing')]  
+      
+      if cn(source, 'st_ia2') == -1:
+        s.st_ia2 = ''
+      else:
+        s.st_ia2 = row[cn(source,'st_ia2')]  
+        
+      if cn(source, 'ia2') == -1:
+        s.ia2 = ''
+      else:
+        s.ia2 = row[cn(source,'ia2')]  
+        
+      if cn(source, 'fd_ia1') == -1:
+        s.fd_ia1 = ''
+      else:
+        s.fd_ia1 = row[cn(source,'fd_ia1')]  
+        
+      if cn(source, 'title') == -1:
+        s.title = ''
+      else:
+        s.title = row[cn(source,'title')]  
+      
+      if cn(source, 'bpa') == -1:
+        s.bpa = ''
+      else:
+        s.bpa = row[cn(source,'bpa')]  
+        
       arr_Stack.append(s)
   return arr_Stack
 
