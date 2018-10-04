@@ -1,4 +1,9 @@
 
+chmod a+x WeeklyReport.py
+
+./WeeklyReport.py
+
+
 git remote add origin https://github.com/SnowSpider/Dashboard.git
 
 git add -A
@@ -7,3 +12,6 @@ git push -u origin master
 
 
 git push -u origin master -f
+
+SnowSpider
+8184367ad0b3f
