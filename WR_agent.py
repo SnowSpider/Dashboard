@@ -944,7 +944,7 @@ for i in xrange(1,len(arr_WR)-2):
   
   arr_WR[i].sum_BO = arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run + arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run + arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run + arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run + arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run + arr_WR[i].proc_NoBO + arr_WR[i].BO_Parser_cmp + arr_WR[i].BO_Parser_run 
   
-  arr_WR[i].sum_task = arr_WR[i].sum_proc + arr_WR[i].sum_pa1 + arr_WR[i].sum_pa2 + arr_WR[i].sum_ing + arr_WR[i].sum_ia1 + arr_WR[i].sum_ia2
+  arr_WR[i].sum_task = arr_WR[i].sum_proc + arr_WR[i].sum_pa1 + arr_WR[i].sum_pa2 + arr_WR[i].sum_ing + arr_WR[i].sum_ia1 + arr_WR[i].sum_ia2 + arr_WR[i].sum_aps
   arr_WR[i].sum_task_bad = arr_WR[i].sum_proc_bad + arr_WR[i].sum_pa1_bad + arr_WR[i].sum_ing_bad + arr_WR[i].sum_ia1_bad
   if arr_WR[i].sum_task > 0:
     arr_WR[i].acc_overall = (arr_WR[i].sum_task - arr_WR[i].sum_task_bad) / float(arr_WR[i].sum_task)
