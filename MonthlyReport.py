@@ -529,6 +529,7 @@ total_pa2 = 0
 total_ing = 0
 total_ia1 = 0
 total_ia2 = 0
+total_aps = 0
 
 for i in xrange(1,len(arr_WR)-2):
   
@@ -948,6 +949,7 @@ for i in xrange(1,len(arr_WR)-2):
   total_ing += arr_WR[i].sum_ing
   total_ia1 += arr_WR[i].sum_ia1
   total_ia2 += arr_WR[i].sum_ia2
+  total_aps += arr_WR[i].sum_aps
   
 # 5. Write WeeklyRecord objects into the output sheet (Dashboard.csv)
 

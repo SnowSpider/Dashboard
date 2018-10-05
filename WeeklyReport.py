@@ -525,6 +525,7 @@ total_pa2 = 0
 total_ing = 0
 total_ia1 = 0
 total_ia2 = 0
+total_aps = 0
 
 for i in xrange(1,len(arr_WR)-2):
   
@@ -944,6 +945,7 @@ for i in xrange(1,len(arr_WR)-2):
   total_ing += arr_WR[i].sum_ing
   total_ia1 += arr_WR[i].sum_ia1
   total_ia2 += arr_WR[i].sum_ia2
+  total_aps += arr_WR[i].sum_aps
   
 # 5. Write WeeklyRecord objects into the output sheet (Dashboard.csv)
 
@@ -963,7 +965,7 @@ csvfile.write('Series'+d+str(total_Ser)+d+d+'2nd Processing Audit'+d+str(total_p
 csvfile.write('Batch'+d+str(total_Bat)+d+d+'Hades Ingestion'+d+str(total_ing)+'\n')
 csvfile.write('Parser-processed'+d+str(total_Parser)+d+d+'1st Ingestion Audit'+d+str(total_ia1)+'\n')
 csvfile.write('Modification'+d+str(total_IndMod)+d+d+'2nd Ingestion Audit'+d+str(total_ia2)+'\n')
-csvfile.write('No Blackout'+d+str(total_NoBO)+'\n')
+csvfile.write('No Blackout'+d+str(total_NoBO)+d+d+'Audit Processed Sheet'+d+str(total_aps)+'\n')
 
 #sys.stdout.write('.')
 #sys.stdout.flush()
