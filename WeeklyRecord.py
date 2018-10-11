@@ -43,6 +43,7 @@ class WeeklyRecord(object):
 
     self.sum_proc = 0
     self.sum_proc_bad = 0
+    self.sum_BO_Parser = 0
     self.acc_proc = 0
 
     self.pa1_Ind_cmp = 0
