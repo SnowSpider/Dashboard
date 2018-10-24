@@ -92,7 +92,7 @@ collectAgents('Source/Agents.csv', arr_agent)
 # 1. Initialize the WeeklyRecord array
 
 date_start = datetime(2017, 12, 1)
-date_end = datetime(2018, 12, 1)
+date_end = datetime(2019, 12, 1)
 
 arr_WR = []
 arr_WR.append(WeeklyRecord())
@@ -100,7 +100,8 @@ arr_WR.append(WeeklyRecord())
 date_intermediate = date_start
 
 counter = 1
-num_month = 1
+num_year = 2017
+num_month = 12
 
 
 while date_intermediate < date_end:
@@ -108,13 +109,18 @@ while date_intermediate < date_end:
   arr_WR[counter].week = date_intermediate
   #print(arr_WR[counter].week)
   counter += 1
-  date_intermediate = datetime(2018, num_month, 1)
-  num_month += 1
+  if num_month == 12:
+    num_year += 1
+    num_month = 1
+  else:
+    num_month += 1
+  date_intermediate = datetime(num_year, num_month, 1)
+
   
 
 arr_WR[1].week = date_start
 
-arr_WR[0].week = 'week'
+arr_WR[0].week = 'month'
 arr_WR[0].proc_Ind_cmp = 'proc_Ind_cmp'
 arr_WR[0].proc_Ind_run = 'proc_Ind_run'
 arr_WR[0].proc_Rng_cmp = 'proc_Rng_cmp'
@@ -915,7 +921,8 @@ for i in xrange(1,len(arr_WR)-2):
     next(csvreader)
     for row in csvreader:
       if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week and row[col_to_num('G')] in arr_agent:
-        arr_WR[i].BO_Parser_cmp += int(row[col_to_num('E')])
+        if row[col_to_num('E')]!='': 
+          arr_WR[i].BO_Parser_cmp += int(row[col_to_num('E')])
   
   # BO_Parser_run
   
@@ -924,7 +931,8 @@ for i in xrange(1,len(arr_WR)-2):
     next(csvreader)
     for row in csvreader:
       if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week and row[col_to_num('G')] in arr_agent:
-        arr_WR[i].BO_Parser_run += int(row[col_to_num('E')])
+        if row[col_to_num('E')]!='': 
+          arr_WR[i].BO_Parser_run += int(row[col_to_num('E')])
   
   arr_WR[i].sum_BO_Parser = arr_WR[i].BO_Parser_cmp + arr_WR[i].BO_Parser_run
   

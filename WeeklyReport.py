@@ -911,7 +911,8 @@ for i in xrange(1,len(arr_WR)-2):
     next(csvreader)
     for row in csvreader:
       if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week and row[col_to_num('G')] in arr_agent:
-        arr_WR[i].BO_Parser_cmp += int(row[col_to_num('E')])
+        if row[col_to_num('E')]!='': 
+          arr_WR[i].BO_Parser_cmp += int(row[col_to_num('E')])
   
   # BO_Parser_run
   
@@ -920,7 +921,8 @@ for i in xrange(1,len(arr_WR)-2):
     next(csvreader)
     for row in csvreader:
       if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week and row[col_to_num('G')] in arr_agent:
-        arr_WR[i].BO_Parser_run += int(row[col_to_num('E')])
+        if row[col_to_num('E')]!='': 
+          arr_WR[i].BO_Parser_run += int(row[col_to_num('E')])
   
   arr_WR[i].sum_BO_Parser = arr_WR[i].BO_Parser_cmp + arr_WR[i].BO_Parser_run
   

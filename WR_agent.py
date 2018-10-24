@@ -336,6 +336,7 @@ def write_WR(agent):
 
   arr_WR[0].sum_proc = 'sum_proc'
   arr_WR[0].sum_proc_bad = 'sum_proc_bad'
+  arr_WR[0].sum_BO_Parser = 'sum_BO_Parser'
   arr_WR[0].acc_proc = 'acc_proc'
 
   arr_WR[0].pa1_Ind_cmp = 'pa1_Ind_cmp'
@@ -907,7 +908,8 @@ def write_WR(agent):
       next(csvreader)
       for row in csvreader:
         if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week and row[col_to_num('G')] == agent:
-          arr_WR[i].BO_Parser_cmp += int(row[col_to_num('E')])
+          if row[col_to_num('E')]!='': 
+            arr_WR[i].BO_Parser_cmp += int(row[col_to_num('E')])
     
     # BO_Parser_run
     
@@ -916,8 +918,10 @@ def write_WR(agent):
       next(csvreader)
       for row in csvreader:
         if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week and row[col_to_num('G')] == agent:
-          arr_WR[i].BO_Parser_run += int(row[col_to_num('E')])
+          if row[col_to_num('E')]!='': 
+            arr_WR[i].BO_Parser_run += int(row[col_to_num('E')])
         
+    arr_WR[i].sum_BO_Parser = arr_WR[i].BO_Parser_cmp + arr_WR[i].BO_Parser_run
     
     arr_WR[i].sum_BO = arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run + arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run + arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run + arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run + arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run + arr_WR[i].proc_NoBO + arr_WR[i].BO_Parser_cmp + arr_WR[i].BO_Parser_run 
     
@@ -949,7 +953,7 @@ def write_WR(agent):
   csvfile = open('Output/'+agent+'.csv','w')
   d = ','
   for WR in arr_WR: # This line really needs rewriting.
-    line = str(WR.week)+d+str(WR.proc_Ind_cmp)+d+str(WR.proc_Ind_run)+d+str(WR.proc_Rng_cmp)+d+str(WR.proc_Rng_run)+d+str(WR.proc_Ser_cmp)+d+str(WR.proc_Ser_run)+d+str(WR.proc_Bat_cmp)+d+str(WR.proc_Bat_run)+d+str(WR.proc_IndMod_cmp)+d+str(WR.proc_IndMod_run)+d+str(WR.proc_NoBO)+d+str(WR.proc_Parser_cmp)+d+str(WR.proc_Parser_run)+d+str(WR.proc_Ind_cmp_bad)+d+str(WR.proc_Ind_run_bad)+d+str(WR.proc_Rng_cmp_bad)+d+str(WR.proc_Rng_run_bad)+d+str(WR.proc_Ser_cmp_bad)+d+str(WR.proc_Ser_run_bad)+d+str(WR.proc_Bat_cmp_bad)+d+str(WR.proc_Bat_run_bad)+d+str(WR.proc_IndMod_cmp_bad)+d+str(WR.proc_IndMod_run_bad)+d+str(WR.proc_NoBO_bad)+d+str(WR.proc_Parser_cmp_bad)+d+str(WR.proc_Parser_run_bad)+d+str(WR.sum_proc)+d+str(WR.sum_proc_bad)+d+str(WR.acc_proc)+d+str(WR.pa1_Ind_cmp)+d+str(WR.pa1_Ind_run)+d+str(WR.pa1_Rng_cmp)+d+str(WR.pa1_Rng_run)+d+str(WR.pa1_Ser_cmp)+d+str(WR.pa1_Ser_run)+d+str(WR.pa1_Bat_cmp)+d+str(WR.pa1_Bat_run)+d+str(WR.pa1_IndMod_cmp)+d+str(WR.pa1_IndMod_run)+d+str(WR.pa1_NoBO)+d+str(WR.pa1_Parser_cmp)+d+str(WR.pa1_Parser_run)+d+str(WR.pa1_Ind_cmp_bad)+d+str(WR.pa1_Ind_run_bad)+d+str(WR.pa1_Rng_cmp_bad)+d+str(WR.pa1_Rng_run_bad)+d+str(WR.pa1_Ser_cmp_bad)+d+str(WR.pa1_Ser_run_bad)+d+str(WR.pa1_Bat_cmp_bad)+d+str(WR.pa1_Bat_run_bad)+d+str(WR.pa1_IndMod_cmp_bad)+d+str(WR.pa1_IndMod_run_bad)+d+str(WR.sum_pa1)+d+str(WR.sum_pa1_bad)+d+str(WR.acc_pa1)+d+str(WR.pa2_Ind_cmp)+d+str(WR.pa2_Ind_run)+d+str(WR.pa2_Rng_cmp)+d+str(WR.pa2_Rng_run)+d+str(WR.pa2_Bat_cmp)+d+str(WR.pa2_Bat_run)+d+str(WR.sum_pa2)+d+str(WR.ing_Ind_cmp)+d+str(WR.ing_Ind_run)+d+str(WR.ing_Rng_cmp)+d+str(WR.ing_Rng_run)+d+str(WR.ing_Ser_cmp)+d+str(WR.ing_Ser_run)+d+str(WR.ing_Bat_cmp)+d+str(WR.ing_Bat_run)+d+str(WR.ing_IndMod_cmp)+d+str(WR.ing_IndMod_run)+d+str(WR.ing_Parser_cmp)+d+str(WR.ing_Parser_run)+d+str(WR.ing_Parser_ing)+d+str(WR.ing_Ind_cmp_bad)+d+str(WR.ing_Ind_run_bad)+d+str(WR.ing_Rng_cmp_bad)+d+str(WR.ing_Rng_run_bad)+d+str(WR.ing_Ser_cmp_bad)+d+str(WR.ing_Ser_run_bad)+d+str(WR.ing_Bat_cmp_bad)+d+str(WR.ing_Bat_run_bad)+d+str(WR.ing_IndMod_cmp_bad)+d+str(WR.ing_IndMod_run_bad)+d+str(WR.ing_Parser_cmp_bad)+d+str(WR.ing_Parser_run_bad)+d+str(WR.ing_Parser_ing_bad)+d+str(WR.sum_ing)+d+str(WR.sum_ing_bad)+d+str(WR.acc_ing)+d+str(WR.ia1_Ind_cmp)+d+str(WR.ia1_Ind_run)+d+str(WR.ia1_Rng_cmp)+d+str(WR.ia1_Rng_run)+d+str(WR.ia1_Ser_cmp)+d+str(WR.ia1_Ser_run)+d+str(WR.ia1_Bat_cmp)+d+str(WR.ia1_Bat_run)+d+str(WR.ia1_IndMod_cmp)+d+str(WR.ia1_IndMod_run)+d+str(WR.ia1_Parser_cmp)+d+str(WR.ia1_Parser_run)+d+str(WR.ia1_Parser_ing)+d+str(WR.ia1_Ind_cmp_bad)+d+str(WR.ia1_Ind_run_bad)+d+str(WR.ia1_Parser_ing_bad)+d+str(WR.sum_ia1)+d+str(WR.sum_ia1_bad)+d+str(WR.acc_ia1)+d+str(WR.ia2_Ind_cmp)+d+str(WR.ia2_Ind_run)+d+str(WR.ia2_Parser_ing)+d+str(WR.sum_ia2)+d+str(WR.aps_Stack_cmp)+d+str(WR.aps_Stack_run)+d+str(WR.sum_aps)+d+str(WR.sum_mail)+d+str(WR.sum_BO)+d+str(WR.sum_task)+d+str(WR.sum_task_bad)+d+str(WR.acc_overall)+'\n'
+    line = str(WR.week)+d+str(WR.proc_Ind_cmp)+d+str(WR.proc_Ind_run)+d+str(WR.proc_Rng_cmp)+d+str(WR.proc_Rng_run)+d+str(WR.proc_Ser_cmp)+d+str(WR.proc_Ser_run)+d+str(WR.proc_Bat_cmp)+d+str(WR.proc_Bat_run)+d+str(WR.proc_IndMod_cmp)+d+str(WR.proc_IndMod_run)+d+str(WR.proc_NoBO)+d+str(WR.proc_Parser_cmp)+d+str(WR.proc_Parser_run)+d+str(WR.proc_Ind_cmp_bad)+d+str(WR.proc_Ind_run_bad)+d+str(WR.proc_Rng_cmp_bad)+d+str(WR.proc_Rng_run_bad)+d+str(WR.proc_Ser_cmp_bad)+d+str(WR.proc_Ser_run_bad)+d+str(WR.proc_Bat_cmp_bad)+d+str(WR.proc_Bat_run_bad)+d+str(WR.proc_IndMod_cmp_bad)+d+str(WR.proc_IndMod_run_bad)+d+str(WR.proc_NoBO_bad)+d+str(WR.proc_Parser_cmp_bad)+d+str(WR.proc_Parser_run_bad)+d+str(WR.sum_proc)+d+str(WR.sum_proc_bad)+d+str(WR.sum_BO_Parser)+d+str(WR.acc_proc)+d+str(WR.pa1_Ind_cmp)+d+str(WR.pa1_Ind_run)+d+str(WR.pa1_Rng_cmp)+d+str(WR.pa1_Rng_run)+d+str(WR.pa1_Ser_cmp)+d+str(WR.pa1_Ser_run)+d+str(WR.pa1_Bat_cmp)+d+str(WR.pa1_Bat_run)+d+str(WR.pa1_IndMod_cmp)+d+str(WR.pa1_IndMod_run)+d+str(WR.pa1_NoBO)+d+str(WR.pa1_Parser_cmp)+d+str(WR.pa1_Parser_run)+d+str(WR.pa1_Ind_cmp_bad)+d+str(WR.pa1_Ind_run_bad)+d+str(WR.pa1_Rng_cmp_bad)+d+str(WR.pa1_Rng_run_bad)+d+str(WR.pa1_Ser_cmp_bad)+d+str(WR.pa1_Ser_run_bad)+d+str(WR.pa1_Bat_cmp_bad)+d+str(WR.pa1_Bat_run_bad)+d+str(WR.pa1_IndMod_cmp_bad)+d+str(WR.pa1_IndMod_run_bad)+d+str(WR.sum_pa1)+d+str(WR.sum_pa1_bad)+d+str(WR.acc_pa1)+d+str(WR.pa2_Ind_cmp)+d+str(WR.pa2_Ind_run)+d+str(WR.pa2_Rng_cmp)+d+str(WR.pa2_Rng_run)+d+str(WR.pa2_Bat_cmp)+d+str(WR.pa2_Bat_run)+d+str(WR.sum_pa2)+d+str(WR.ing_Ind_cmp)+d+str(WR.ing_Ind_run)+d+str(WR.ing_Rng_cmp)+d+str(WR.ing_Rng_run)+d+str(WR.ing_Ser_cmp)+d+str(WR.ing_Ser_run)+d+str(WR.ing_Bat_cmp)+d+str(WR.ing_Bat_run)+d+str(WR.ing_IndMod_cmp)+d+str(WR.ing_IndMod_run)+d+str(WR.ing_Parser_cmp)+d+str(WR.ing_Parser_run)+d+str(WR.ing_Parser_ing)+d+str(WR.ing_Ind_cmp_bad)+d+str(WR.ing_Ind_run_bad)+d+str(WR.ing_Rng_cmp_bad)+d+str(WR.ing_Rng_run_bad)+d+str(WR.ing_Ser_cmp_bad)+d+str(WR.ing_Ser_run_bad)+d+str(WR.ing_Bat_cmp_bad)+d+str(WR.ing_Bat_run_bad)+d+str(WR.ing_IndMod_cmp_bad)+d+str(WR.ing_IndMod_run_bad)+d+str(WR.ing_Parser_cmp_bad)+d+str(WR.ing_Parser_run_bad)+d+str(WR.ing_Parser_ing_bad)+d+str(WR.sum_ing)+d+str(WR.sum_ing_bad)+d+str(WR.acc_ing)+d+str(WR.ia1_Ind_cmp)+d+str(WR.ia1_Ind_run)+d+str(WR.ia1_Rng_cmp)+d+str(WR.ia1_Rng_run)+d+str(WR.ia1_Ser_cmp)+d+str(WR.ia1_Ser_run)+d+str(WR.ia1_Bat_cmp)+d+str(WR.ia1_Bat_run)+d+str(WR.ia1_IndMod_cmp)+d+str(WR.ia1_IndMod_run)+d+str(WR.ia1_Parser_cmp)+d+str(WR.ia1_Parser_run)+d+str(WR.ia1_Parser_ing)+d+str(WR.ia1_Ind_cmp_bad)+d+str(WR.ia1_Ind_run_bad)+d+str(WR.ia1_Parser_ing_bad)+d+str(WR.sum_ia1)+d+str(WR.sum_ia1_bad)+d+str(WR.acc_ia1)+d+str(WR.ia2_Ind_cmp)+d+str(WR.ia2_Ind_run)+d+str(WR.ia2_Parser_ing)+d+str(WR.sum_ia2)+d+str(WR.aps_Stack_cmp)+d+str(WR.aps_Stack_run)+d+str(WR.sum_aps)+d+str(WR.sum_mail)+d+str(WR.sum_BO)+d+str(WR.sum_task)+d+str(WR.sum_task_bad)+d+str(WR.acc_overall)+'\n'
 
     csvfile.write(line)
 
