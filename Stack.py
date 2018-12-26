@@ -27,4 +27,5 @@ class Stack(object):
     self.fd_ia1 = ''
     self.title = ''
     self.bpa = ''
+    self.station = ''
 

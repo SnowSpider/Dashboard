@@ -1,1 +1,105 @@
-A1:A47,AB1:AB47,BC1:BC47,BL1:BL47,CM1:CM47,DF1:DF47,DL1:DL47,DO1:DO47,DT1:DT47
+function update_volume_trend_2() {
+  
+  // Part 1: Reading
+  
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  
+  var sheet_dvt = ss.getSheetByName('Daily Volume Trend');
+  var dr_dvt = sheet_dvt.getDataRange();
+  var v_dvt = dr_dvt.getValues();
+  var arr_dvt = [['']];
+  
+  for (r = 3 ; r < v_dvt.length ; r++) {
+    var arr_temp = [];
+    for (c = 0; c < 50; c++) {
+      arr_temp.push(v_dvt[r][c]);
+    }
+    arr_dvt.push(arr_temp);
+  }
+  
+  arr_dvt.shift(); //removing the first element
+  
+  
+  
+  var sheet_vt = ss.getSheetByName('Volume Trend 2');
+  var dr_vt = sheet_vt.getDataRange();
+  var v_vt = dr_vt.getValues();
+  var arr_vt = [['']];
+  
+  for (r = 0 ; r < v_vt.length ; r++) {
+    var arr_temp = [];
+    for (c = 0; c < v_vt[r].length; c++) {
+      arr_temp.push(v_vt[r][c]);
+    }
+    arr_vt.push(arr_temp);
+  }
+  
+  arr_vt.shift(); //removing the first element
+  
+  
+  // Part 2: Analyzing
+  
+  var peak = 0;
+  
+  var startdate = new Date(arr_vt[1][1], arr_vt[0][1]-1, 1); // First day of month
+  var enddate = new Date(arr_vt[1][1], arr_vt[0][1], 1); // First day of next month
+  
+  var timeDiff = Math.abs(startdate.getTime() - enddate.getTime());
+  var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+  
+  var col_day = 0;
+  
+  for (r=4; r<arr_vt.length;r++) {
+    for (c=1; c<32; c++){
+      arr_vt[r][c] = 0;
+    }
+  }
+  
+  for (r = 1; r < arr_dvt.length; r++){
+    if (arr_dvt[r][0] >= startdate && arr_dvt[r][0] < enddate){
+      col_day = arr_dvt[r][0].getDay();
+      for (c = 2; c < arr_dvt[r].length; c++){ // first c must be 2
+        arr_vt[c+4][col_day] += arr_dvt[r][c];
+      }
+    }
+  }
+  
+  var arr_avg = [];
+  
+  for (c=1; c<32; c++){
+    var avg_temp = 0;
+    for (r=6; r<arr_vt.length;r++) {
+      avg_temp += arr_vt[r][c];
+    }
+    avg_temp = avg_temp / diffDays;
+    arr_avg.push(avg_temp);
+  }
+  
+  for (c=1;c<32;c++){
+    arr_vt[4][c] = arr_avg[c-1];
+  }
+  
+  
+  // Part 3: Writing
+  
+  
+  var sheet_vt_output = ss.getSheetByName('Volume Trend Output');
+  sheet_vt_output.clear();
+  
+  //sheet_vt_output.getRange(1,1,arr_dvt.length,arr_dvt[0].length).setValues(arr_dvt);
+  sheet_vt_output.getRange(1,1,arr_vt.length,arr_vt[0].length).setValues(arr_vt);
+  
+  
+  
+  var ui = SpreadsheetApp.getUi();
+  
+  if ( 0 ){
+    ui.alert('Something went wrong.');
+  }
+  else {
+    ui.alert('Script finished.');
+  }
+  
+  SpreadsheetApp.flush();
+}
+

@@ -388,6 +388,11 @@ def arr_Stack(source):
       else:
         s.bpa = row[cn(source,'bpa')]  
         
+      if cn(source, 'station') == -1:
+        s.station = ''
+      else:
+        s.station = row[cn(source,'station')]  
+      
       arr_Stack.append(s)
   return arr_Stack
 
@@ -868,6 +873,9 @@ for i in xrange(1,len(arr_WR)-2):
         arr_WR[i].ia2_Parser_ing += 1
   
   
+  
+  
+  
   # sum figures (done)
   
   arr_WR[i].sum_proc = arr_WR[i].proc_Ind_cmp + arr_WR[i].proc_Ind_run + arr_WR[i].proc_Rng_cmp + arr_WR[i].proc_Rng_run + arr_WR[i].proc_Ser_cmp + arr_WR[i].proc_Ser_run + arr_WR[i].proc_Bat_cmp + arr_WR[i].proc_Bat_run + arr_WR[i].proc_IndMod_cmp + arr_WR[i].proc_IndMod_run + arr_WR[i].proc_NoBO + arr_WR[i].proc_Parser_cmp + arr_WR[i].proc_Parser_run
@@ -970,6 +978,35 @@ csvfile.write('Batch'+d+str(total_Bat)+d+d+'Hades Ingestion'+d+str(total_ing)+'\
 csvfile.write('Parser-processed'+d+str(total_Parser)+d+d+'1st Ingestion Audit'+d+str(total_ia1)+'\n')
 csvfile.write('Modification'+d+str(total_IndMod)+d+d+'2nd Ingestion Audit'+d+str(total_ia2)+'\n')
 csvfile.write('No Blackout'+d+str(total_NoBO)+d+d+'Audit Processed Sheet'+d+str(total_aps)+'\n')
+
+
+# write to StationCount.csv
+
+csvfile = open('Output/StationCount.csv','w')
+d = ','
+for s in Ind_cmp:
+  csvfile.write(s.station+'\n')
+for s in Ind_run:
+  csvfile.write(s.station+'\n')
+for s in Rng_cmp:
+  csvfile.write(s.station+'\n')
+for s in Rng_run:
+  csvfile.write(s.station+'\n')
+for s in Ser_cmp:
+  csvfile.write(s.station+'\n')
+for s in Ser_run:
+  csvfile.write(s.station+'\n')
+for s in Bat_cmp:
+  csvfile.write(s.station+'\n')
+for s in Bat_run:
+  csvfile.write(s.station+'\n')
+for s in IndMod_cmp:
+  csvfile.write(s.station+'\n')
+for s in IndMod_run:
+  csvfile.write(s.station+'\n')
+
+
+  
 
 #sys.stdout.write('.')
 #sys.stdout.flush()

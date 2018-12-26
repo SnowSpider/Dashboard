@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+from odf.opendocument import load
+from odf.table import Table
+
 class A:
     def __init__(self, a = 5):
         self.a = a
