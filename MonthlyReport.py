@@ -287,7 +287,11 @@ print('str(col_to_num('"AC"')) = ' + str(col_to_num('AC')))
 
 
 def t(s):
+  #s = s[:s.find(".") + 1]
   return datetime.strptime(s,'%Y-%m-%d %H:%M:%S.%f') # do not change this
+
+def t2(s):
+  return datetime.strptime(s,'%Y-%m-%d %H:%M:%S') # Ingnores decimals
 
 # 3. Read source sheets and create arrays of Stack objects
 
@@ -868,13 +872,13 @@ for i in xrange(1,len(arr_WR)-2):
   
   for s in Parser_ing: # Parser_ing
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing + '@google.com' in arr_agent:
+      if t2(s.st_ing) >= arr_WR[i].week and t2(s.st_ing) < arr_WR[i+1].week and s.ing + '@google.com' in arr_agent:
         arr_WR[i].ing_Parser_ing += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 + '@google.com' in arr_agent:
+      if t2(s.st_ia1) >= arr_WR[i].week and t2(s.st_ia1) < arr_WR[i+1].week and s.ia1 + '@google.com' in arr_agent:
         arr_WR[i].ia1_Parser_ing += 1
     if s.st_ia2 != '':
-      if t(s.st_ia2) >= arr_WR[i].week and t(s.st_ia2) < arr_WR[i+1].week and s.ia2 + '@google.com' in arr_agent:
+      if t2(s.st_ia2) >= arr_WR[i].week and t2(s.st_ia2) < arr_WR[i+1].week and s.ia2 + '@google.com' in arr_agent:
         arr_WR[i].ia2_Parser_ing += 1
   
   

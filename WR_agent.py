@@ -168,7 +168,11 @@ def unique_ing(arr):
   return arr_final
 
 def t(s):
+  #s = s[:s.find(".") + 1]
   return datetime.strptime(s,'%Y-%m-%d %H:%M:%S.%f') # do not change this
+
+def t2(s):
+  return datetime.strptime(s,'%Y-%m-%d %H:%M:%S') # Ingnores decimals
 
 # 3. Read source sheets and create arrays of Stack objects
 
@@ -287,7 +291,7 @@ def write_WR(agent):
   # 1. Initialize the WeeklyRecord array
 
   date_start = datetime(2017, 12, 4)
-  date_end = datetime(2018, 12, 31)
+  date_end = datetime(2019, 2, 28)
 
   arr_WR = []
   arr_WR.append(WeeklyRecord())
@@ -855,13 +859,13 @@ def write_WR(agent):
     
     for s in Parser_ing: # Parser_ing
       if s.st_ing != '':
-        if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing + '@google.com' == agent:
+        if t2(s.st_ing) >= arr_WR[i].week and t2(s.st_ing) < arr_WR[i+1].week and s.ing + '@google.com' == agent:
           arr_WR[i].ing_Parser_ing += 1
       if s.st_ia1 != '':
-        if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 + '@google.com' == agent:
+        if t2(s.st_ia1) >= arr_WR[i].week and t2(s.st_ia1) < arr_WR[i+1].week and s.ia1 + '@google.com' == agent:
           arr_WR[i].ia1_Parser_ing += 1
       if s.st_ia2 != '':
-        if t(s.st_ia2) >= arr_WR[i].week and t(s.st_ia2) < arr_WR[i+1].week and s.ia2 + '@google.com' == agent:
+        if t2(s.st_ia2) >= arr_WR[i].week and t2(s.st_ia2) < arr_WR[i+1].week and s.ia2 + '@google.com' == agent:
           arr_WR[i].ia2_Parser_ing += 1
     
     

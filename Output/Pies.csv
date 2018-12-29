@@ -1,8 +1,8 @@
 Blackout Scope,Total,,Task Type,Total
-Individual,11729,,Symphony Processing,15611
-Ranged,1993,,1st Processing Audit,15998
-Series,130,,2nd Processing Audit,12057
-Batch,0,,Hades Ingestion,14862
-Parser-processed,7785,,1st Ingestion Audit,17885
-Modification,1187,,2nd Ingestion Audit,10375
-No Blackout,444,,Audit Processed Sheet,3001
+Individual,12090,,Symphony Processing,16144
+Ranged,2034,,1st Processing Audit,16401
+Series,166,,2nd Processing Audit,12447
+Batch,0,,Hades Ingestion,15026
+Parser-processed,9805,,1st Ingestion Audit,18408
+Modification,1222,,2nd Ingestion Audit,11138
+No Blackout,479,,Audit Processed Sheet,3151

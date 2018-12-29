@@ -92,7 +92,7 @@ collectAgents('Source/Agents.csv', arr_agent)
 # 1. Initialize the WeeklyRecord array
 
 date_start = datetime(2017, 12, 4)
-date_end = datetime(2018, 12, 31)
+date_end = datetime(2019, 12, 31)
 
 arr_WR = []
 arr_WR.append(WeeklyRecord())
@@ -277,7 +277,11 @@ print('str(col_to_num('"AC"')) = ' + str(col_to_num('AC')))
 
 
 def t(s):
+  #s = s[:s.find(".") + 1]
   return datetime.strptime(s,'%Y-%m-%d %H:%M:%S.%f') # do not change this
+
+def t2(s):
+  return datetime.strptime(s,'%Y-%m-%d %H:%M:%S') # Ingnores decimals
 
 # 3. Read source sheets and create arrays of Stack objects
 
@@ -386,12 +390,7 @@ def arr_Stack(source):
       if cn(source, 'bpa') == -1:
         s.bpa = ''
       else:
-        s.bpa = row[cn(source,'bpa')]  
-        
-      if cn(source, 'station') == -1:
-        s.station = ''
-      else:
-        s.station = row[cn(source,'station')]  
+        s.bpa = row[cn(source,'bpa')]
       
       arr_Stack.append(s)
   return arr_Stack
@@ -863,15 +862,15 @@ for i in xrange(1,len(arr_WR)-2):
   
   for s in Parser_ing: # Parser_ing
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing + '@google.com' in arr_agent:
+      if t2(s.st_ing) >= arr_WR[i].week and t2(s.st_ing) < arr_WR[i+1].week and s.ing + '@google.com' in arr_agent:
         arr_WR[i].ing_Parser_ing += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 + '@google.com' in arr_agent:
+      if t2(s.st_ia1) >= arr_WR[i].week and t2(s.st_ia1) < arr_WR[i+1].week and s.ia1 + '@google.com' in arr_agent:
         arr_WR[i].ia1_Parser_ing += 1
     if s.st_ia2 != '':
-      if t(s.st_ia2) >= arr_WR[i].week and t(s.st_ia2) < arr_WR[i+1].week and s.ia2 + '@google.com' in arr_agent:
+      if t2(s.st_ia2) >= arr_WR[i].week and t2(s.st_ia2) < arr_WR[i+1].week and s.ia2 + '@google.com' in arr_agent:
         arr_WR[i].ia2_Parser_ing += 1
-  
+    
   
   
   
