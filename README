@@ -1,2 +1,41 @@
+Author: Wonjun Lee
+Created on Jun 8, 2018
+Passed unit tests on Jun 8, 2018
+
+
+How to use
+
+
+Download the following decks in CSV format from the New Dashboard into the folder "source." Use the Old Dashboard for the series running deck.
+
+Individual completed
+Individual runnning
+Range completed 
+Range running
+Series completed
+Series running
+Batch completed
+Batch running
+No Blackouts
+Stack completed
+Stack running
+
+
+Open the command line. Change directory (cd) to the folder where you have the ErrorReport package. 
+
+Enter the following commands:
+
+chmod a+x Report_error.py
+chmod a+x Report_IPA.py
 chmod a+x WeeklyReport.py
+chmod a+x MonthlyReport.py
+chmod a+x WR_agent.py
+
+./Report_error.py
+./Report_IPA.py
 ./WeeklyReport.py
+./MonthlyReport.py
+./WR_agent.py
+
+If you encounter any error message, please contact Wonjun Lee at NOC or call 512-584-6655.
+
