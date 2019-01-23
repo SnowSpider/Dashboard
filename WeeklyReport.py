@@ -392,6 +392,11 @@ def arr_Stack(source):
       else:
         s.bpa = row[cn(source,'bpa')]
       
+      if cn(source, 'station') == -1:
+        s.title = ''
+      else:
+        s.station = row[cn(source,'station')]
+      
       arr_Stack.append(s)
   return arr_Stack
 
@@ -981,6 +986,12 @@ csvfile.write('No Blackout'+d+str(total_NoBO)+d+d+'Audit Processed Sheet'+d+str(
 
 # write to StationCount.csv
 
+
+
+
+
+
+
 csvfile = open('Output/StationCount.csv','w')
 d = ','
 for s in Ind_cmp:
@@ -1003,8 +1014,12 @@ for s in IndMod_cmp:
   csvfile.write(s.station+'\n')
 for s in IndMod_run:
   csvfile.write(s.station+'\n')
-
-
+for s in Parser_cmp:
+  csvfile.write(s.station+'\n')
+for s in Parser_run:
+  csvfile.write(s.station+'\n')
+for s in NoBO:
+  csvfile.write(s.station+'\n')
   
 
 #sys.stdout.write('.')
