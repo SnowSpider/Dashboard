@@ -290,8 +290,8 @@ def write_WR(agent):
 
   # 1. Initialize the WeeklyRecord array
 
-  date_start = datetime(2017, 12, 4)
-  date_end = datetime(2019, 2, 28)
+  date_start = datetime(2018, 9, 3)
+  date_end = datetime(2019, 4, 1)
 
   arr_WR = []
   arr_WR.append(WeeklyRecord())
@@ -541,9 +541,6 @@ def write_WR(agent):
       if s.st_pa1 != '':
         if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 == agent:
           arr_WR[i].pa1_Ser_cmp += 1
-      if s.st_pa2 != '':
-        if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 == agent:
-          arr_WR[i].pa2_Ser_cmp += 1
       if s.st_ing != '':
         if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing == agent:
           arr_WR[i].ing_Ser_cmp += 1
@@ -561,9 +558,6 @@ def write_WR(agent):
       if s.st_pa1 != '':
         if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 == agent:
           arr_WR[i].pa1_Ser_run += 1
-      if s.st_pa2 != '':
-        if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 == agent:
-          arr_WR[i].pa2_Ser_run += 1
       if s.st_ing != '':
         if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing == agent:
           arr_WR[i].ing_Ser_run += 1

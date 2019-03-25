@@ -6,7 +6,7 @@ Ind_run,A,K,P,Q,R,S,T,U,N,O,V,W,X,Y,Z,AA,B,J,C
 Rng_cmp,A,Q,A,V,W,A,Y,X,S,T,S,Z,AA,S,,,G,O,H
 Rng_run,A,Q,A,V,W,A,Y,X,S,T,S,Z,AA,S,,,G,O,H
 Ser_cmp,B,P,B,Q,R,B,,,B,U,B,S,,B,,,G,N,H
-Ser_run,A,J,A,L,,A,,,A,K,A,,,A,,,C,O,D
+Ser_run,A,O,A,P,Q,A,,,A,T,A,R,,A,,,F,M,G
 Bat_cmp,A,O,A,P,Q,A,R,S,A,T,A,V,W,A,,,E,N,
 Bat_run,A,O,A,P,Q,A,R,S,A,T,A,V,W,A,,,E,N,
 IndMod_cmp,A,M,A,Q,R,A,,,O,P,O,S,T,O,,,B,L,C

@@ -554,9 +554,6 @@ for i in xrange(1,len(arr_WR)-2):
     if s.st_pa1 != '':
       if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
         arr_WR[i].pa1_Ser_cmp += 1
-    if s.st_pa2 != '':
-      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
-        arr_WR[i].pa2_Ser_cmp += 1
     if s.st_ing != '':
       if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
         arr_WR[i].ing_Ser_cmp += 1
@@ -574,9 +571,6 @@ for i in xrange(1,len(arr_WR)-2):
     if s.st_pa1 != '':
       if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
         arr_WR[i].pa1_Ser_run += 1
-    if s.st_pa2 != '':
-      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
-        arr_WR[i].pa2_Ser_run += 1
     if s.st_ing != '':
       if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
         arr_WR[i].ing_Ser_run += 1
@@ -769,9 +763,6 @@ for i in xrange(1,len(arr_WR)-2):
         fd = s.fd_pa1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].pa1_IndMod_cmp_bad += 1
-    if s.st_pa2 != '':
-      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
-        arr_WR[i].pa2_IndMod_cmp += 1
     if s.st_ing != '':
       if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
         arr_WR[i].ing_IndMod_cmp += 1
@@ -795,9 +786,6 @@ for i in xrange(1,len(arr_WR)-2):
         fd = s.fd_pa1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].pa1_IndMod_run_bad += 1
-    if s.st_pa2 != '':
-      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
-        arr_WR[i].pa2_IndMod_run += 1
     if s.st_ing != '':
       if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
         arr_WR[i].ing_IndMod_run += 1
