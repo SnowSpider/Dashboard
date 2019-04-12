@@ -546,314 +546,314 @@ for i in xrange(1,len(arr_WR)-2):
   
   for s in Ser_cmp_proc: # Ser_cmp_proc
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_Ser_cmp += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_Ser_cmp_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_Ser_cmp += 1
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_Ser_cmp += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Ser_cmp += 1
   
   for s in Ser_run_proc: # Ser_run_proc
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_Ser_run += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_Ser_run_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_Ser_run += 1
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_Ser_run += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Ser_run += 1
   
   for s in Rng_cmp_proc: # Rng_cmp_proc
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_Rng_cmp += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_Rng_cmp_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_Rng_cmp += 1
         fd = s.fd_pa1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].pa1_Rng_cmp_bad += 1
     if s.st_pa2 != '':
-      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
+      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week:
         arr_WR[i].pa2_Rng_cmp += 1
   
   for s in Rng_cmp_ing: # Rng_cmp_ing
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_Rng_cmp += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ing_Rng_cmp_bad += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Rng_cmp += 1
   
   for s in Rng_run_proc: # Rng_run_proc
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_Rng_run += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_Rng_run_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_Rng_run += 1
         fd = s.fd_pa1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].pa1_Rng_run_bad += 1
     if s.st_pa2 != '':
-      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
+      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week:
         arr_WR[i].pa2_Rng_run += 1
     
   for s in Rng_run_ing: # Rng_run_ing
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_Rng_run += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ing_Rng_run_bad += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Rng_run += 1
   
   for s in Ind_cmp: # Ind_cmp
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_Ind_cmp += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_Ind_cmp_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_Ind_cmp += 1
         fd = s.fd_pa1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].pa1_Ind_cmp_bad += 1
     if s.st_pa2 != '':
-      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
+      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week:
         arr_WR[i].pa2_Ind_cmp += 1
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_Ind_cmp += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ing_Ind_cmp_bad += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Ind_cmp += 1
         fd = s.fd_ia1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ia1_Ind_cmp_bad += 1
     if s.st_ia2 != '':
-      if t(s.st_ia2) >= arr_WR[i].week and t(s.st_ia2) < arr_WR[i+1].week and s.ia2 in arr_agent:
+      if t(s.st_ia2) >= arr_WR[i].week and t(s.st_ia2) < arr_WR[i+1].week:
         arr_WR[i].ia2_Ind_cmp += 1
   
   for s in Ind_run: # Ind_run
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_Ind_run += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_Ind_run_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_Ind_run += 1
         fd = s.fd_pa1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].pa1_Ind_run_bad += 1
     if s.st_pa2 != '':
-      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
+      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week:
         arr_WR[i].pa2_Ind_run += 1
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_Ind_run += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ing_Ind_run_bad += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Ind_run += 1
         fd = s.fd_ia1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ia1_Ind_run_bad += 1
     if s.st_ia2 != '':
-      if t(s.st_ia2) >= arr_WR[i].week and t(s.st_ia2) < arr_WR[i+1].week and s.ia2 in arr_agent:
+      if t(s.st_ia2) >= arr_WR[i].week and t(s.st_ia2) < arr_WR[i+1].week:
         arr_WR[i].ia2_Ind_run += 1
   
   for s in Bat_cmp: # Bat_cmp
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_Bat_cmp += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_Bat_cmp_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_Bat_cmp += 1
         fd = s.fd_pa1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].pa1_Bat_cmp_bad += 1
     if s.st_pa2 != '':
-      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
+      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week:
         arr_WR[i].pa2_Bat_cmp += 1
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_Bat_cmp += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ing_Bat_cmp_bad += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Bat_cmp += 1
   
   for s in Bat_run: # Bat_run
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_Bat_run += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_Bat_run_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_Bat_run += 1
         fd = s.fd_pa1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].pa1_Bat_run_bad += 1
     if s.st_pa2 != '':
-      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week and s.pa2 in arr_agent:
+      if t(s.st_pa2) >= arr_WR[i].week and t(s.st_pa2) < arr_WR[i+1].week:
         arr_WR[i].pa2_Bat_run += 1
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_Bat_run += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ing_Bat_run_bad += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Bat_run += 1
   
   for s in IndMod_cmp: # IndMod_cmp
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_IndMod_cmp += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_IndMod_cmp_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_IndMod_cmp += 1
         fd = s.fd_pa1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].pa1_IndMod_cmp_bad += 1
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_IndMod_cmp += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ing_IndMod_cmp_bad += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_IndMod_cmp += 1
   
   for s in IndMod_run: #IndMod_run
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_IndMod_run += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_IndMod_run_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_IndMod_run += 1
         fd = s.fd_pa1 # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].pa1_IndMod_run_bad += 1
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_IndMod_run += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ing_IndMod_run_bad += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_IndMod_run += 1
   
   for s in NoBO: # NoBO
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_NoBO += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_NoBO += 1
   
   for s in Stack_cmp: # Stack_cmp
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].aps_Stack_cmp += 1
 
   for s in Stack_run: # Stack_run
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].aps_Stack_run += 1
   
   # Parser stuff
   
   for s in Parser_cmp: # Parser_cmp
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_Parser_cmp += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_Parser_cmp_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_Parser_cmp += 1
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_Parser_cmp += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ing_Parser_cmp_bad += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Parser_cmp += 1
     
   for s in Parser_run: # Parser_run
     if s.st_proc != '':
-      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week and s.proc in arr_agent:
+      if t(s.st_proc) >= arr_WR[i].week and t(s.st_proc) < arr_WR[i+1].week:
         arr_WR[i].proc_Parser_run += 1
         fd = s.fd_proc # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].proc_Parser_run_bad += 1
     if s.st_pa1 != '':
-      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week and s.pa1 in arr_agent:
+      if t(s.st_pa1) >= arr_WR[i].week and t(s.st_pa1) < arr_WR[i+1].week:
         arr_WR[i].pa1_Parser_run += 1
     if s.st_ing != '':
-      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week and s.ing in arr_agent:
+      if t(s.st_ing) >= arr_WR[i].week and t(s.st_ing) < arr_WR[i+1].week:
         arr_WR[i].ing_Parser_run += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
           arr_WR[i].ing_Parser_run_bad += 1
     if s.st_ia1 != '':
-      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week and s.ia1 in arr_agent:
+      if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Parser_run += 1
   
   # Parser_ing special stuff (done, but failure details are omitted)
@@ -912,7 +912,7 @@ for i in xrange(1,len(arr_WR)-2):
     csvreader = csv.reader(csvfile, delimiter = ',')
     next(csvreader)
     for row in csvreader:
-      if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week and row[col_to_num('G')] in arr_agent:
+      if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week:
         if row[col_to_num('E')]!='': 
           arr_WR[i].BO_Parser_cmp += int(row[col_to_num('E')])
   
@@ -922,7 +922,7 @@ for i in xrange(1,len(arr_WR)-2):
     csvreader = csv.reader(csvfile, delimiter = ',')
     next(csvreader)
     for row in csvreader:
-      if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week and row[col_to_num('G')] in arr_agent:
+      if t(row[col_to_num('A')]) >= arr_WR[i].week and t(row[col_to_num('A')]) < arr_WR[i+1].week:
         if row[col_to_num('E')]!='': 
           arr_WR[i].BO_Parser_run += int(row[col_to_num('E')])
   
