@@ -162,6 +162,7 @@ class WeeklyRecord(object):
 
     self.acc_overall = 0
     
+    self.acc_final = 0
 
 
 
