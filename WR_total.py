@@ -939,11 +939,11 @@ for i in xrange(1,len(arr_WR)-2):
     arr_WR[i].acc_overall = 1.0
   
   numAudit = arr_WR[i].pa1_NoBO + arr_WR[i].ia2_Ind_cmp + arr_WR[i].ia2_Ind_run + arr_WR[i].ia1_Bat_cmp + arr_WR[i].ia1_Bat_run + arr_WR[i].ia1_IndMod_cmp + arr_WR[i].ia1_IndMod_run + arr_WR[i].ia2_Parser_ing + arr_WR[i].ia1_Rng_cmp + arr_WR[i].ia1_Rng_run + arr_WR[i].ia1_Ser_cmp + arr_WR[i].ia1_Ser_run
-
+  
   numFail = arr_WR[i].proc_NoBO_bad + arr_WR[i].ia1_Ind_cmp_bad + arr_WR[i].ia1_Ind_run_bad + arr_WR[i].ing_Bat_cmp_bad + arr_WR[i].ing_Bat_run_bad + arr_WR[i].ing_IndMod_cmp_bad + arr_WR[i].ing_IndMod_run_bad + arr_WR[i].ia1_Parser_ing_bad + arr_WR[i].ing_Rng_cmp_bad + arr_WR[i].ing_Rng_run_bad + arr_WR[i].ing_Ser_cmp_bad + arr_WR[i].ing_Ser_run_bad
   
   if numAudit > 0:
-    arr_WR[i].acc_final = (numAudit - numFail) / numAudit
+    arr_WR[i].acc_final = (numAudit - numFail) / float(numAudit)
   else:
     arr_WR[i].acc_final = 1.0
   

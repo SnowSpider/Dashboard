@@ -27,15 +27,23 @@ Enter the following commands:
 
 chmod a+x Report_error.py
 chmod a+x Report_IPA.py
-chmod a+x WeeklyReport.py
-chmod a+x MonthlyReport.py
+chmod a+x WR_BLR.py
+chmod a+x WR_ATX.py
+chmod a+x WR_total.py
 chmod a+x WR_agent.py
+chmod a+x MR_BLR.py
+chmod a+x MR_ATX.py
+chmod a+x MR_total.py
 
 ./Report_error.py
 ./Report_IPA.py
-./WeeklyReport.py
-./MonthlyReport.py
+./WR_BLR.py
+./WR_ATX.py
+./WR_total.py
 ./WR_agent.py
+./MR_BLR.py
+./MR_ATX.py
+./MR_total.py
 
 If you encounter any error message, please contact Wonjun Lee at NOC or call 512-584-6655.
 
