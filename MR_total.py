@@ -544,6 +544,9 @@ total_ia1 = 0
 total_ia2 = 0
 total_aps = 0
 
+arr_ing_rng_bad_temp = []
+flag_bad = 0
+
 for i in xrange(1,len(arr_WR)-2):
   
   for s in Ser_cmp_proc: # Ser_cmp_proc
@@ -603,7 +606,14 @@ for i in xrange(1,len(arr_WR)-2):
         arr_WR[i].ing_Rng_cmp += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
-          arr_WR[i].ing_Rng_cmp_bad += 1
+          flag_bad = 0
+          for fd_temp in arr_ing_rng_bad_temp:
+            if fd == fd_temp:
+              flag_bad = 1
+              break
+          if flag_bad == 0:
+            arr_WR[i].ing_Rng_cmp_bad += 1
+          arr_ing_rng_bad_temp.append(fd)
     if s.st_ia1 != '':
       if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Rng_cmp += 1
@@ -631,7 +641,14 @@ for i in xrange(1,len(arr_WR)-2):
         arr_WR[i].ing_Rng_run += 1
         fd = s.fd_ing # check failure detail
         if fd != '' and fd != 'null' and fd != '0' and fd != chr(39):
-          arr_WR[i].ing_Rng_run_bad += 1
+          flag_bad = 0
+          for fd_temp in arr_ing_rng_bad_temp:
+            if fd == fd_temp:
+              flag_bad = 1
+              break
+          if flag_bad == 0:
+            arr_WR[i].ing_Rng_run_bad += 1
+          arr_ing_rng_bad_temp.append(fd)
     if s.st_ia1 != '':
       if t(s.st_ia1) >= arr_WR[i].week and t(s.st_ia1) < arr_WR[i+1].week:
         arr_WR[i].ia1_Rng_run += 1
