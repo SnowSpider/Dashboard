@@ -91,7 +91,7 @@ collectAgents('Source/Agents_BLR.csv', arr_agent)
 
 # 1. Initialize the WeeklyRecord array
 
-date_start = datetime(2017, 12, 4)
+date_start = datetime(2017, 12, 3)
 date_end = datetime(2019, 12, 31)
 
 arr_WR = []

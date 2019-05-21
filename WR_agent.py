@@ -290,8 +290,8 @@ def write_WR(agent):
 
   # 1. Initialize the WeeklyRecord array
 
-  date_start = datetime(2018, 10, 1)
-  date_end = datetime(2019, 5, 6)
+  date_start = datetime(2018, 9, 30)
+  date_end = datetime(2019, 12, 31)
 
   arr_WR = []
   arr_WR.append(WeeklyRecord())
